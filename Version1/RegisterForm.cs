@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace Version1
         public RegisterForm()
         {
             InitializeComponent();
+            fNameField.ForeColor = Color.Gray;
+            lNameField.ForeColor = Color.Gray;
+            passField.ForeColor = Color.Gray;
+            loginField.ForeColor = Color.Gray; 
+            repPassField.ForeColor = Color.Gray;
             fNameField.Text = "Name";
             lNameField.Text = "Last name";
             loginField.Text = "login";
@@ -22,12 +28,13 @@ namespace Version1
             passField.Text = "Password";
             repPassField.UseSystemPasswordChar = false;
             repPassField.Text = "Repeat your password";
+
             
         }
 
         private void buttonClose(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void panel2_MouseDown(object sender, MouseEventArgs e)
@@ -139,6 +146,78 @@ namespace Version1
                 repPassField.Text = "Repeat your password";
                 repPassField.ForeColor = Color.Gray;
             }
+        }
+
+        private void buttonRegistBack_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            LogInForm lf = new LogInForm();
+            lf.ShowDialog();
+            
+        }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            buttonRegistBack.ForeColor = Color.Aqua;
+            if (fNameField.Text == "Name")
+                return;
+            if (lNameField.Text == "Last name")
+                return;
+            if (loginField.Text == "login")
+                return;
+            if (passField.Text == "Password")
+                return;
+
+            if (userExists())
+                return;
+
+            DB db = new DB();
+            MySqlCommand command = new MySqlCommand("INSERT INTO `person` (`login`, `pass`, `name`, `surname`) VALUES (@login, @password, @name, @surname)", db.getConnection());
+            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
+            command.Parameters.Add("@password", MySqlDbType.VarChar).Value = passField.Text;
+            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = fNameField.Text;
+            command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = lNameField.Text;
+
+            db.openConnection();
+
+            if (command.ExecuteNonQuery() == 1)
+                MessageBox.Show("Account was succesfully created");
+            else
+                MessageBox.Show("Account was not created!");
+
+
+            db.closeConnection();
+        }
+
+        public Boolean userExists()
+        {
+            DB db = new DB();
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand("SELECT * from `person` where `login`=@uL", db.getConnection());
+            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginField.Text;
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Login already exists");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void buttonRegistBack_MouseEnter(object sender, EventArgs e)
+        {
+            buttonRegistBack.ForeColor = Color.LightSeaGreen;
+        }
+
+        private void buttonRegistBack_MouseLeave(object sender, EventArgs e)
+        {
+            buttonRegistBack.ForeColor = Color.Turquoise;
         }
     }
 }

@@ -39,7 +39,7 @@
             this.login = new System.Windows.Forms.PictureBox();
             this.log = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonRegister = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.password)).BeginInit();
@@ -177,32 +177,34 @@
             this.closeButton.MouseEnter += new System.EventHandler(this.closeButton_MouseEnter);
             this.closeButton.MouseLeave += new System.EventHandler(this.closeButton_MouseLeave);
             // 
-            // button1
+            // buttonRegister
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(255)))), ((int)(((byte)(153)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.YellowGreen;
-            this.button1.FlatAppearance.BorderSize = 2;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("MV Boli", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(370, 373);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 38);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "New ? Register right now!";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(255)))), ((int)(((byte)(153)))));
+            this.buttonRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRegister.FlatAppearance.BorderColor = System.Drawing.Color.YellowGreen;
+            this.buttonRegister.FlatAppearance.BorderSize = 2;
+            this.buttonRegister.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.buttonRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRegister.Font = new System.Drawing.Font("MV Boli", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRegister.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonRegister.Location = new System.Drawing.Point(370, 373);
+            this.buttonRegister.Name = "buttonRegister";
+            this.buttonRegister.Size = new System.Drawing.Size(220, 38);
+            this.buttonRegister.TabIndex = 6;
+            this.buttonRegister.Text = "New ? Register right now!";
+            this.buttonRegister.UseVisualStyleBackColor = false;
+            this.buttonRegister.Click += new System.EventHandler(this.RegisterForm_Cilck);
+            this.buttonRegister.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
+         
             // 
             // LogInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Version1.Properties.Resources.food1;
-            this.ClientSize = new System.Drawing.Size(800, 437);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(796, 437);
+            this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -235,6 +237,6 @@
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.TextBox passField;
         private System.Windows.Forms.TextBox loginField;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonRegister;
     }
 }

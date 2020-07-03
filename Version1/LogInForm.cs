@@ -30,7 +30,7 @@ namespace Version1
 
         private void closeButton_MouseClick(object sender, MouseEventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void closeButton_MouseEnter(object sender, EventArgs e)
@@ -59,6 +59,7 @@ namespace Version1
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            buttonRegister.ForeColor = Color.DarkGreen;
             String login = loginField.Text;
             String pass = passField.Text;
             DB db = new DB();
@@ -72,7 +73,23 @@ namespace Version1
             adapter.Fill(table);
             if(table.Rows.Count > 0)
             {
-                MessageBox.Show("Login and password are correct");
+                string temp = "";
+                db.openConnection();
+                MySqlCommand com = new MySqlCommand("SELECT `name`, `surname` from `person` where `login`=@uL AND `pass` = @uP", db.getConnection());
+                com.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
+                com.Parameters.Add("@uP", MySqlDbType.VarChar).Value = pass;
+                MySqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    temp = reader.GetString("name") +" "+ reader.GetString("surname");
+                }
+
+                
+                this.Hide();
+                
+                MainWindow mainWindow = new MainWindow(temp);
+                mainWindow.Show();
+                db.closeConnection();
             }
             else
             {
@@ -80,10 +97,19 @@ namespace Version1
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void RegisterForm_Cilck(object sender, EventArgs e)
         {
+            this.Visible = false;
             RegisterForm rf = new RegisterForm();
-            rf.ShowDialog();
+            rf.Show();
+            
         }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            buttonRegister.ForeColor = Color.DarkGreen;
+        }
+
+       
     }
 }

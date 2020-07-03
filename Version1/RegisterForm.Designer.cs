@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonRegistBack = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@
             this.panel2.BackColor = System.Drawing.Color.SpringGreen;
             this.panel2.BackgroundImage = global::Version1.Properties.Resources.food1;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel2.Controls.Add(this.buttonRegistBack);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
@@ -71,6 +73,19 @@
             this.panel2.TabIndex = 3;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
+            // 
+            // buttonRegistBack
+            // 
+            this.buttonRegistBack.BackColor = System.Drawing.Color.Turquoise;
+            this.buttonRegistBack.Location = new System.Drawing.Point(13, 12);
+            this.buttonRegistBack.Name = "buttonRegistBack";
+            this.buttonRegistBack.Size = new System.Drawing.Size(36, 23);
+            this.buttonRegistBack.TabIndex = 16;
+            this.buttonRegistBack.Text = "←";
+            this.buttonRegistBack.UseVisualStyleBackColor = false;
+            this.buttonRegistBack.Click += new System.EventHandler(this.buttonRegistBack_Click);
+            this.buttonRegistBack.MouseEnter += new System.EventHandler(this.buttonRegistBack_MouseEnter);
+            this.buttonRegistBack.MouseLeave += new System.EventHandler(this.buttonRegistBack_MouseLeave);
             // 
             // button1
             // 
@@ -197,10 +212,12 @@
             this.buttonLogin.Text = "Submit";
             this.buttonLogin.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // repPassField
             // 
             this.repPassField.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.repPassField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.repPassField.Font = new System.Drawing.Font("MV Boli", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.repPassField.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.repPassField.Location = new System.Drawing.Point(507, 214);
@@ -282,5 +299,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonRegistBack;
     }
 }
