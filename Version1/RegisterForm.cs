@@ -178,15 +178,17 @@ namespace Version1
             db.openConnection();
 
             if (command.ExecuteNonQuery() == 1)
+            {
                 MessageBox.Show("Account was succesfully created");
+                LogInForm form = new LogInForm();
+                form.ShowDialog();
+            } 
             else
                 MessageBox.Show("Account was not created!");
 
 
             db.closeConnection();
         }
-
-        
 
         public Boolean userExists()
         {

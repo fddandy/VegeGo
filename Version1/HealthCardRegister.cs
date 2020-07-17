@@ -75,50 +75,86 @@ namespace Version1
             if(!alreadyExists()) // inserting new record
             {
                 MySqlCommand command = new MySqlCommand("INSERT INTO `health_card` (`birth_date`, `weight`, `height`, `activ_level`, `id_person`) VALUES (@uBD, @uW, @uH, @uAL, @id)", db.getConnection());
-                setParameters(command);
-                /*
-                command.Parameters.Add("@birth_date", MySqlDbType.DateTime).Value = datePick.Value;
-                command.Parameters.Add("@weight", MySqlDbType.Float).Value = float.Parse(fieldWeight.Text);
-                command.Parameters.Add("@height", MySqlDbType.Int32).Value = int.Parse(fieldHeight.Text);
-                command.Parameters.Add("@activ_level", MySqlDbType.VarChar).Value = comboBoxActLevel.SelectedItem;
-                command.Parameters.Add("@id_person", MySqlDbType.Int32).Value = user.Id;
-               */
-                db.openConnection();
-
-                if (command.ExecuteNonQuery() == 1)
+               if(setParameters(command))
                 {
-                    MessageBox.Show("Data was succesfully inserted", "Adding");
-                    createHealthCard(hc, db);
+                    db.openConnection();
+
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Data was succesfully inserted", "Adding");
+                        createHealthCard(hc, db);
+                    }
+                    else
+                        MessageBox.Show("Data was not inserted!", "Adding");
                 }
-                else
-                    MessageBox.Show("Data was not inserted!", "Adding");
+               else
+                {
+                    return;
+                }
             }
             else // editing an old record
             {
                 MySqlCommand command = new MySqlCommand("UPDATE health_card  SET birth_date = @uBD, weight = @uW, height = @uH, activ_level = @uAL WHERE id_person = @id", db.getConnection());
-                setParameters(command);
-                db.openConnection();
-                if (command.ExecuteNonQuery() == 1)
+                if(setParameters(command))
                 {
-                    MessageBox.Show("Data was succesfully updated", "Editing");
-                    createHealthCard(hc, db);
+                    db.openConnection();
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Data was succesfully updated", "Editing");
+                        createHealthCard(hc, db);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data was not updated", "Editing");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Data was not updated", "Editing");
+                    return;
                 }
 
             }
             db.closeConnection();
         }
 
-        private void setParameters(MySqlCommand command)
+        private bool setParameters(MySqlCommand command)
         {
-            command.Parameters.Add("@uBD", MySqlDbType.DateTime).Value = datePick.Value;
-            command.Parameters.Add("@uW", MySqlDbType.Float).Value = float.Parse(fieldWeight.Text);
-            command.Parameters.Add("@uH", MySqlDbType.Int32).Value = int.Parse(fieldHeight.Text);
-            command.Parameters.Add("@uAL", MySqlDbType.VarChar).Value = comboBoxActLevel.SelectedItem;
-            command.Parameters.Add("@id", MySqlDbType.Int32).Value = user.Id;
+            if (!isDataValid())
+            {
+                return false;
+            }
+            else
+            {
+                command.Parameters.Add("@uBD", MySqlDbType.DateTime).Value = datePick.Value;
+                command.Parameters.Add("@uW", MySqlDbType.Float).Value = float.Parse(fieldWeight.Text);
+                command.Parameters.Add("@uH", MySqlDbType.Int32).Value = int.Parse(fieldHeight.Text);
+                command.Parameters.Add("@uAL", MySqlDbType.VarChar).Value = comboBoxActLevel.SelectedItem;
+                command.Parameters.Add("@id", MySqlDbType.Int32).Value = user.Id;
+                return true;
+            }
+        }
+
+        private bool isDataValid()
+        {
+            if (datePick.Value > DateTime.Now.AddYears(-7))
+            {
+                MessageBox.Show("You must be at least 7 years old to use this application", "Not valid age");
+                return false;
+            }
+            else if (int.Parse(fieldHeight.Text) < 120 || int.Parse(fieldHeight.Text) > 230)
+            {
+                MessageBox.Show("Cannot accept such few/many cm", "Not valid height");
+                return false;
+            }
+
+            else if (float.Parse(fieldWeight.Text) < 30 || float.Parse(fieldWeight.Text) > 350)
+            {
+                MessageBox.Show("Cannot accept such few/many kg", "Not valid weight");
+                return false;
+            }
+            else
+                return true;
+                
         }
 
         private void createHealthCard(HealthCard hc, DB db)
