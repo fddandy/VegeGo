@@ -51,6 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB.cs" />
+    <Compile Include="HealthCard.cs" />
+    <Compile Include="HealthCardRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HealthCardRegister.Designer.cs">
+      <DependentUpon>HealthCardRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +78,10 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
+    <EmbeddedResource Include="HealthCardRegister.resx">
+      <DependentUpon>HealthCardRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,6 +116,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\food.jpg" />
+    <Content Include="Resources\iconfinder_common-bookmark-book-open-outline-stroke_763427.png" />
+    <Content Include="Resources\VegeGo.jpg" />
     <None Include="Resources\iconfinder_key-password-passcode-access_2205205.png" />
     <None Include="Resources\iconfinder_user_female_172621.png" />
     <None Include="Resources\food1.jpg" />

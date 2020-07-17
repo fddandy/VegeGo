@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Welcome = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonLogin = new System.Windows.Forms.Button();
@@ -41,6 +42,7 @@
             this.closeButton = new System.Windows.Forms.Label();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.password)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.login)).BeginInit();
@@ -55,8 +57,19 @@
             this.panel1.Size = new System.Drawing.Size(182, 264);
             this.panel1.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(33, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(143, 49);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
             // Welcome
             // 
+            this.Welcome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Welcome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Welcome.Font = new System.Drawing.Font("MV Boli", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Welcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
@@ -67,12 +80,12 @@
             this.Welcome.TabIndex = 0;
             this.Welcome.Text = "Welcome to your healthier eating";
             this.Welcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Welcome.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(157)))), ((int)(((byte)(90)))));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.buttonLogin);
             this.panel2.Controls.Add(this.passField);
             this.panel2.Controls.Add(this.loginField);
@@ -81,7 +94,7 @@
             this.panel2.Controls.Add(this.log);
             this.panel2.Location = new System.Drawing.Point(323, 85);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(315, 264);
+            this.panel2.Size = new System.Drawing.Size(332, 264);
             this.panel2.TabIndex = 1;
             // 
             // buttonLogin
@@ -159,7 +172,6 @@
             this.log.TabIndex = 0;
             this.log.Text = "Member log in";
             this.log.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.log.Click += new System.EventHandler(this.log_Click);
             // 
             // closeButton
             // 
@@ -196,7 +208,6 @@
             this.buttonRegister.UseVisualStyleBackColor = false;
             this.buttonRegister.Click += new System.EventHandler(this.RegisterForm_Cilck);
             this.buttonRegister.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-         
             // 
             // LogInForm
             // 
@@ -204,6 +215,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Version1.Properties.Resources.food1;
             this.ClientSize = new System.Drawing.Size(796, 437);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.panel2);
@@ -216,6 +228,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LogInForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LogInForm_MouseMove);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.password)).EndInit();
@@ -238,5 +251,6 @@
         private System.Windows.Forms.TextBox passField;
         private System.Windows.Forms.TextBox loginField;
         private System.Windows.Forms.Button buttonRegister;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

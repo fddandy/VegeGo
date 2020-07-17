@@ -13,19 +13,11 @@ namespace Version1
 {
     public partial class LogInForm : Form
     {
+        User user;
         public LogInForm()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void log_Click(object sender, EventArgs e)
-        {
-
+            
         }
 
         private void closeButton_MouseClick(object sender, MouseEventArgs e)
@@ -70,24 +62,30 @@ namespace Version1
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = pass;
 
             adapter.SelectCommand = command;
+            if(adapter == null)
+            {
+                MessageBox.Show("Please, provide data");
+            }
+            else 
             adapter.Fill(table);
             if(table.Rows.Count > 0)
             {
-                string temp = "";
+               // string temp = "";
                 db.openConnection();
-                MySqlCommand com = new MySqlCommand("SELECT `name`, `surname` from `person` where `login`=@uL AND `pass` = @uP", db.getConnection());
+                MySqlCommand com = new MySqlCommand("SELECT `id`, `name`, `surname` from `person` where `login`=@uL AND `pass` = @uP", db.getConnection());
                 com.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
                 com.Parameters.Add("@uP", MySqlDbType.VarChar).Value = pass;
                 MySqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
-                    temp = reader.GetString("name") +" "+ reader.GetString("surname");
+                   // temp = reader.GetString("name") +" "+ reader.GetString("surname");
+                    user = new User(reader.GetInt32("id"), reader.GetString("name"), reader.GetString("surname"));
                 }
-
+             
                 
                 this.Hide();
                 
-                MainWindow mainWindow = new MainWindow(temp);
+                MainWindow mainWindow = new MainWindow(user);
                 mainWindow.Show();
                 db.closeConnection();
             }

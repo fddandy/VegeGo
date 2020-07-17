@@ -27,9 +27,7 @@ namespace Version1
             passField.UseSystemPasswordChar = false;
             passField.Text = "Password";
             repPassField.UseSystemPasswordChar = false;
-            repPassField.Text = "Repeat your password";
-
-            
+            repPassField.Text = "Repeat your password"; 
         }
 
         private void buttonClose(object sender, EventArgs e)
@@ -176,8 +174,7 @@ namespace Version1
             command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
             command.Parameters.Add("@password", MySqlDbType.VarChar).Value = passField.Text;
             command.Parameters.Add("@name", MySqlDbType.VarChar).Value = fNameField.Text;
-            command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = lNameField.Text;
-
+            command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = lNameField.Text; 
             db.openConnection();
 
             if (command.ExecuteNonQuery() == 1)
@@ -188,6 +185,8 @@ namespace Version1
 
             db.closeConnection();
         }
+
+        
 
         public Boolean userExists()
         {
@@ -219,5 +218,6 @@ namespace Version1
         {
             buttonRegistBack.ForeColor = Color.Turquoise;
         }
+
     }
 }
