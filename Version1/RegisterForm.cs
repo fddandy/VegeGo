@@ -32,7 +32,7 @@ namespace Version1
 
         private void buttonClose(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void panel2_MouseDown(object sender, MouseEventArgs e)
@@ -180,6 +180,7 @@ namespace Version1
             if (command.ExecuteNonQuery() == 1)
             {
                 MessageBox.Show("Account was succesfully created");
+                this.Visible = false;
                 LogInForm form = new LogInForm();
                 form.ShowDialog();
             } 

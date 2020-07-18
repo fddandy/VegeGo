@@ -51,6 +51,8 @@ namespace Version1
         private void buttonRegistBack_Click(object sender, EventArgs e)
         {
             this.Close();
+            MainWindow mw = new MainWindow(user);
+            mw.ShowDialog();
         }
 
         private bool dataInserted()
@@ -83,6 +85,9 @@ namespace Version1
                     {
                         MessageBox.Show("Data was succesfully inserted", "Adding");
                         createHealthCard(hc, db);
+                        this.Close();
+                        MainWindow mw = new MainWindow(user);
+                        mw.ShowDialog();
                     }
                     else
                         MessageBox.Show("Data was not inserted!", "Adding");
@@ -102,10 +107,13 @@ namespace Version1
                     {
                         MessageBox.Show("Data was succesfully updated", "Editing");
                         createHealthCard(hc, db);
+                        db.closeConnection();
+                        updateHistory(hc,db);
                     }
                     else
                     {
                         MessageBox.Show("Data was not updated", "Editing");
+                        db.closeConnection();
                     }
                 }
                 else
@@ -114,6 +122,19 @@ namespace Version1
                 }
 
             }
+            db.closeConnection();
+        }
+
+        private void updateHistory(HealthCard hc, DB db)
+        {
+            MySqlCommand comUpdate = new MySqlCommand("INSERT INTO `updates_history` (`update_date`, `weight`, `activ_level`, `id_hc`)" +
+                                                                            " VALUES (@uDate, @uW, @uAL, @uID)", db.getConnection());
+            comUpdate.Parameters.Add("@uDate", MySqlDbType.DateTime).Value = DateTime.Now;
+            comUpdate.Parameters.Add("@uW", MySqlDbType.Float).Value = hc.Weight;
+            comUpdate.Parameters.Add("@uAL", MySqlDbType.VarChar).Value = hc.ActLevel;
+            comUpdate.Parameters.Add("@uID", MySqlDbType.Int32).Value = hc.Id;
+            db.openConnection();
+            comUpdate.ExecuteNonQuery();
             db.closeConnection();
         }
 
@@ -147,7 +168,7 @@ namespace Version1
                 return false;
             }
 
-            else if (float.Parse(fieldWeight.Text) < 30 || float.Parse(fieldWeight.Text) > 350)
+            else if (float.Parse(fieldWeight.Text) < 30.0 || float.Parse(fieldWeight.Text) > 350.0)
             {
                 MessageBox.Show("Cannot accept such few/many kg", "Not valid weight");
                 return false;
