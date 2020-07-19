@@ -35,6 +35,7 @@
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.labelStatistics = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +49,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.chartWeight = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.comboBoxPeriod = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.buttonEditHC = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,21 +69,19 @@
             this.labelWeight = new System.Windows.Forms.Label();
             this.labelBirthDate = new System.Windows.Forms.Label();
             this.labelHealthInf = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxPeriod = new System.Windows.Forms.ComboBox();
-            this.chartWeight = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartWeight)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartWeight)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -101,11 +103,27 @@
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.labelStatistics);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 364);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(123, 93);
             this.panel7.TabIndex = 4;
+            // 
+            // labelStatistics
+            // 
+            this.labelStatistics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelStatistics.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelStatistics.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStatistics.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.labelStatistics.Location = new System.Drawing.Point(0, 0);
+            this.labelStatistics.Name = "labelStatistics";
+            this.labelStatistics.Size = new System.Drawing.Size(119, 89);
+            this.labelStatistics.TabIndex = 1;
+            this.labelStatistics.Text = "Statistics";
+            this.labelStatistics.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelStatistics.Click += new System.EventHandler(this.labelStatistics_Click);
             // 
             // panel6
             // 
@@ -257,6 +275,55 @@
             this.panelMain.Size = new System.Drawing.Size(675, 401);
             this.panelMain.TabIndex = 2;
             this.panelMain.Visible = false;
+            // 
+            // chartWeight
+            // 
+            chartArea1.AxisX.Title = "Date";
+            chartArea1.AxisY.Title = "Kg";
+            chartArea1.Name = "ChartArea1";
+            this.chartWeight.ChartAreas.Add(chartArea1);
+            this.chartWeight.Location = new System.Drawing.Point(316, 80);
+            this.chartWeight.Name = "chartWeight";
+            series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            series1.Name = "SeriesW";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.chartWeight.Series.Add(series1);
+            this.chartWeight.Size = new System.Drawing.Size(345, 292);
+            this.chartWeight.TabIndex = 14;
+            this.chartWeight.Text = "chart1";
+            title1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            title1.Name = "Title1";
+            title1.Text = "Personal statistics";
+            title2.Name = "Title2";
+            this.chartWeight.Titles.Add(title1);
+            this.chartWeight.Titles.Add(title2);
+            this.chartWeight.Click += new System.EventHandler(this.chart_Click);
+            // 
+            // comboBoxPeriod
+            // 
+            this.comboBoxPeriod.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.comboBoxPeriod.FormattingEnabled = true;
+            this.comboBoxPeriod.Items.AddRange(new object[] {
+            "last week",
+            "last month",
+            "las year"});
+            this.comboBoxPeriod.Location = new System.Drawing.Point(390, 40);
+            this.comboBoxPeriod.Name = "comboBoxPeriod";
+            this.comboBoxPeriod.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPeriod.TabIndex = 13;
+            this.comboBoxPeriod.SelectedIndexChanged += new System.EventHandler(this.comboBoxPeriod_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(325, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 17);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Period ";
             // 
             // buttonEditHC
             // 
@@ -442,55 +509,6 @@
             this.labelHealthInf.TabIndex = 0;
             this.labelHealthInf.Text = "Your health card";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(325, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 17);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Period ";
-            // 
-            // comboBoxPeriod
-            // 
-            this.comboBoxPeriod.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.comboBoxPeriod.FormattingEnabled = true;
-            this.comboBoxPeriod.Items.AddRange(new object[] {
-            "last week",
-            "last month",
-            "las year"});
-            this.comboBoxPeriod.Location = new System.Drawing.Point(390, 40);
-            this.comboBoxPeriod.Name = "comboBoxPeriod";
-            this.comboBoxPeriod.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxPeriod.TabIndex = 13;
-            this.comboBoxPeriod.SelectedIndexChanged += new System.EventHandler(this.comboBoxPeriod_SelectedIndexChanged);
-            // 
-            // chartWeight
-            // 
-            chartArea1.AxisX.Title = "Date";
-            chartArea1.AxisY.Title = "Kg";
-            chartArea1.Name = "ChartArea1";
-            this.chartWeight.ChartAreas.Add(chartArea1);
-            this.chartWeight.Location = new System.Drawing.Point(316, 80);
-            this.chartWeight.Name = "chartWeight";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Name = "SeriesWeight";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chartWeight.Series.Add(series1);
-            this.chartWeight.Size = new System.Drawing.Size(345, 292);
-            this.chartWeight.TabIndex = 14;
-            this.chartWeight.Text = "chart1";
-            title1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            title1.Name = "Title1";
-            title1.Text = "Personal statistics";
-            title2.Name = "Title2";
-            this.chartWeight.Titles.Add(title1);
-            this.chartWeight.Titles.Add(title2);
-            this.chartWeight.Click += new System.EventHandler(this.chart_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -508,6 +526,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseMove);
             this.panel1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -515,13 +534,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartWeight)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartWeight)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -563,5 +582,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartWeight;
         private System.Windows.Forms.ComboBox comboBoxPeriod;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelStatistics;
     }
 }

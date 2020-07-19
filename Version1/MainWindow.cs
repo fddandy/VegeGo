@@ -87,6 +87,7 @@ namespace Version1
         private void LbCard_MouseClick(object sender, MouseEventArgs e)
         {
             panelMain.Visible = true;
+            comboBoxPeriod.Text = "-----select-----";
         }
 
         private void buttonEditHC_Click(object sender, EventArgs e)
@@ -103,37 +104,80 @@ namespace Version1
 
         private void comboBoxPeriod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chartWeight.Series["SeriesWeight"].Points.Clear();
-            drawChart();
+            chartWeight.Series["SeriesW"].Points.Clear();
+            switch (comboBoxPeriod.SelectedIndex)
+            {
+                case 0:
+                    {
+                        drawChart("week");
+                        break;
+                    }
+                case 1:
+                    {
+                        drawChart("month");
+                        break;
+                    }
+                case 2:
+                    {
+                        drawChart("year");
+                        break;
+                    }
+            }
         }
 
-        private void drawChart()
+        private void drawChart(string sort)
         {
             DB db = new DB();
             try
             {
                 db.openConnection();
-                MySqlCommand command = new MySqlCommand("SELECT `weight`, `update_date` FROM `updates_history` WHERE id_hc = @uID ", db.getConnection());
+                DateTime maxDate = DateTime.Now.Date;
+                DateTime minDate = DateTime.Now.AddDays(-7).Date; ;
+                MySqlCommand command = new MySqlCommand("SELECT `weight`, `update_date` FROM `updates_history` WHERE id_hc = @uID AND update_date BETWEEN @uStart and @uEnd", db.getConnection());
                 command.Parameters.Add("@uID", MySqlDbType.Int32).Value = hc.Id;
+                switch (sort)
+                {
+                    case "week":
+                        {
+                            command.Parameters.Add("@uStart", MySqlDbType.Date).Value = DateTime.Now.AddDays(-7).Date;
+                            minDate = DateTime.Now.AddDays(-7).Date;
+                            command.Parameters.Add("@uEnd", MySqlDbType.Date).Value = DateTime.Now.Date;
+                            chartWeight.ChartAreas[0].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+                            break;
+                        }
+                    case "month":
+                        {
+                            command.Parameters.Add("@uStart", MySqlDbType.Date).Value = DateTime.Now.AddDays(-30).Date;
+                            minDate = DateTime.Now.AddDays(-30).Date;
+                            command.Parameters.Add("@uEnd", MySqlDbType.Date).Value = DateTime.Now.Date;
+                            chartWeight.ChartAreas[0].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+                            break;
+                        }
+                    case "year":
+                        {
+                            command.Parameters.Add("@uStart", MySqlDbType.Date).Value = DateTime.Now.AddDays(-365).Date;
+                            minDate = DateTime.Now.AddDays(-365).Date;
+                            command.Parameters.Add("@uEnd", MySqlDbType.Date).Value = DateTime.Now.Date;
+                            chartWeight.ChartAreas[0].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Months;
+                            break;
+                        }
+                   
+                }
+
                 MySqlDataReader reader;
                 reader = command.ExecuteReader();
-                chartWeight.Series["SeriesWeight"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+               // chartWeight.Series["SeriesWeight"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
                 chartWeight.ChartAreas[0].AxisX.Interval = 1;
                 chartWeight.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy-MM-dd";
-               // chartWeight.ChartAreas[0].AxisX.
-                chartWeight.ChartAreas[0].AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-               // chartWeight.ChartAreas[0].AxisX.IntervalOffset = 1;
-                DateTime maxDate = DateTime.Now;
-                DateTime minDate = new DateTime(2020, 07, 10);
-                chartWeight.ChartAreas[0].AxisY.Maximum = 350;
+                chartWeight.Series["SeriesW"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
+                chartWeight.ChartAreas[0].AxisY.Maximum = 150;
                 chartWeight.ChartAreas[0].AxisY.Minimum = 0;
                 chartWeight.ChartAreas[0].AxisX.Maximum = maxDate.ToOADate();
                 chartWeight.ChartAreas[0].AxisX.Minimum = minDate.ToOADate();
                 while (reader.Read())
                 {
-                    
-                    chartWeight.Series["SeriesWeight"].Points.AddXY(reader.GetFloat("weight"), reader.GetDateTime("update_date"));
-                    
+                   // chartWeight.Series["SeriesWeight"].Points.AddXY(reader.GetDateTime("update_date"), reader.GetFloat("weight"));
+                    chartWeight.Series["SeriesW"].Points.AddXY(reader.GetDateTime("update_date").Date, reader.GetFloat("weight"));
                 }
             }
             catch (Exception)
@@ -147,6 +191,12 @@ namespace Version1
                     db.closeConnection();
                 }
             }
+        }
+
+        private void labelStatistics_Click(object sender, EventArgs e)
+        {
+            Statistics sc = new Statistics(user);
+            sc.ShowDialog();
         }
     }
 }
