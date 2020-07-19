@@ -88,6 +88,8 @@ namespace Version1
         {
             panelMain.Visible = true;
             comboBoxPeriod.Text = "-----select-----";
+            comboBoxChartType.SelectedText = "column";
+            labelDate.Text = DateTime.Now.Date.ToString();
         }
 
         private void buttonEditHC_Click(object sender, EventArgs e)
@@ -195,8 +197,43 @@ namespace Version1
 
         private void labelStatistics_Click(object sender, EventArgs e)
         {
-            Statistics sc = new Statistics(user);
+            BMI sc = new BMI(hc);
             sc.ShowDialog();
+        }
+
+        private void comboBoxChartType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBoxChartType.SelectedIndex)
+            {
+                case 0: // column
+                    {
+                        chartWeight.Series["SeriesW"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                        break;
+                    }
+                case 1: //spline
+                    {
+                        chartWeight.Series["SeriesW"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+                        break;
+                    }
+                case 2: //line
+                    {
+                        chartWeight.Series["SeriesW"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                        break;
+                    }
+                case 3: //point
+                    {
+                        chartWeight.Series["SeriesW"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+                        break;
+                    }
+            }
+
+        }
+
+        private void labelBMI_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            BMI bmi = new BMI(hc);
+            bmi.ShowDialog();
         }
     }
 }

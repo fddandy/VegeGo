@@ -79,11 +79,11 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Statistics.cs">
+    <Compile Include="BMI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Statistics.Designer.cs">
-      <DependentUpon>Statistics.cs</DependentUpon>
+    <Compile Include="BMI.Designer.cs">
+      <DependentUpon>BMI.cs</DependentUpon>
     </Compile>
     <Compile Include="Update.cs" />
     <Compile Include="User.cs" />
@@ -109,8 +109,8 @@
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Statistics.resx">
-      <DependentUpon>Statistics.cs</DependentUpon>
+    <EmbeddedResource Include="BMI.resx">
+      <DependentUpon>BMI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

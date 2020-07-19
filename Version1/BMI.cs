@@ -10,23 +10,17 @@ using System.Windows.Forms;
 
 namespace Version1
 {
-    public partial class Statistics : Form
+    public partial class BMI : Form
     {
-        public Statistics(User user)
+        public BMI(HealthCard hc)
         {
             InitializeComponent();
-            drawChart();
-        }
-
-        private void drawChart()
-        {
-            DateTime max = DateTime.Now;
-            chartStat.ChartAreas[0].AxisX.Maximum = max.ToOADate();
+            double heightM = hc.Height / 100.0;
             
-           // chartStat.Series["SeriesStat"].Points.AddXY(4.5, 45);
-           // chartStat.Series["SeriesStat"].Points.AddXY(5.2, 68);
-           // chartStat.Series["SeriesStat"].Points.AddXY(2.8, 13);
-            
+            double bmi1 = hc.Weight / heightM / heightM;
+            labelCustomBMI.Text = bmi1.ToString();
+            //MessageBox.Show(bmi1.ToString());
+            trackBar.Value = Convert.ToInt32(bmi1);
         }
 
         private void closeButton_Click(object sender, EventArgs e)

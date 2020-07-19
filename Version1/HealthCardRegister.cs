@@ -22,6 +22,7 @@ namespace Version1
             this.user = user;
             if(alreadyExists())
             {
+                datePick.Enabled = false;
                 loadExistingData();
             }
         }
@@ -129,7 +130,7 @@ namespace Version1
         {
             MySqlCommand comUpdate = new MySqlCommand("INSERT INTO `updates_history` (`update_date`, `weight`, `activ_level`, `id_hc`)" +
                                                                             " VALUES (@uDate, @uW, @uAL, @uID)", db.getConnection());
-            comUpdate.Parameters.Add("@uDate", MySqlDbType.DateTime).Value = DateTime.Now;
+            comUpdate.Parameters.Add("@uDate", MySqlDbType.DateTime).Value = DateTime.Now.Date;
             comUpdate.Parameters.Add("@uW", MySqlDbType.Float).Value = hc.Weight;
             comUpdate.Parameters.Add("@uAL", MySqlDbType.VarChar).Value = hc.ActLevel;
             comUpdate.Parameters.Add("@uID", MySqlDbType.Int32).Value = hc.Id;

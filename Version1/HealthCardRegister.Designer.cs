@@ -187,6 +187,7 @@
             // buttonRegistBack
             // 
             this.buttonRegistBack.BackColor = System.Drawing.Color.Turquoise;
+            this.buttonRegistBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRegistBack.Location = new System.Drawing.Point(13, 12);
             this.buttonRegistBack.Name = "buttonRegistBack";
             this.buttonRegistBack.Size = new System.Drawing.Size(36, 23);
@@ -198,6 +199,7 @@
             // buttonCLose
             // 
             this.buttonCLose.BackColor = System.Drawing.Color.Turquoise;
+            this.buttonCLose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCLose.Font = new System.Drawing.Font("Microsoft JhengHei UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(5)));
             this.buttonCLose.Location = new System.Drawing.Point(766, 3);
             this.buttonCLose.Name = "buttonCLose";

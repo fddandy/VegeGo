@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.labelStatistics = new System.Windows.Forms.Label();
@@ -43,12 +43,17 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.LbCard = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelBMI = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelLogAs = new System.Windows.Forms.Label();
             this.labelLoggedAs = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.labelDate = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxChartType = new System.Windows.Forms.ComboBox();
             this.chartWeight = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.comboBoxPeriod = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -195,6 +200,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.labelBMI);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.labelLogAs);
             this.panel2.Controls.Add(this.labelLoggedAs);
@@ -205,6 +211,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(675, 52);
             this.panel2.TabIndex = 1;
+            // 
+            // labelBMI
+            // 
+            this.labelBMI.BackColor = System.Drawing.Color.PeachPuff;
+            this.labelBMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelBMI.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelBMI.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.labelBMI.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBMI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelBMI.Location = new System.Drawing.Point(163, 12);
+            this.labelBMI.Name = "labelBMI";
+            this.labelBMI.Size = new System.Drawing.Size(125, 25);
+            this.labelBMI.TabIndex = 13;
+            this.labelBMI.Text = "Count your BMI";
+            this.labelBMI.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelBMI.Click += new System.EventHandler(this.labelBMI_Click);
             // 
             // pictureBox1
             // 
@@ -221,6 +243,7 @@
             // 
             this.labelLogAs.AutoSize = true;
             this.labelLogAs.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLogAs.ForeColor = System.Drawing.Color.MediumVioletRed;
             this.labelLogAs.Location = new System.Drawing.Point(474, 9);
             this.labelLogAs.Name = "labelLogAs";
             this.labelLogAs.Size = new System.Drawing.Size(60, 21);
@@ -238,6 +261,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Brown;
             this.label1.Location = new System.Drawing.Point(325, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(157, 19);
@@ -264,6 +288,10 @@
             this.panelMain.BackColor = System.Drawing.Color.Transparent;
             this.panelMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMain.BackgroundImage")));
             this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelMain.Controls.Add(this.labelDate);
+            this.panelMain.Controls.Add(this.label7);
+            this.panelMain.Controls.Add(this.label6);
+            this.panelMain.Controls.Add(this.comboBoxChartType);
             this.panelMain.Controls.Add(this.chartWeight);
             this.panelMain.Controls.Add(this.comboBoxPeriod);
             this.panelMain.Controls.Add(this.label5);
@@ -276,29 +304,76 @@
             this.panelMain.TabIndex = 2;
             this.panelMain.Visible = false;
             // 
+            // labelDate
+            // 
+            this.labelDate.BackColor = System.Drawing.Color.White;
+            this.labelDate.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDate.Location = new System.Drawing.Point(558, 36);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(103, 22);
+            this.labelDate.TabIndex = 18;
+            this.labelDate.Text = "Period ";
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label7.Location = new System.Drawing.Point(558, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 28);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Today is : ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label6.Location = new System.Drawing.Point(313, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(75, 17);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Chart type";
+            // 
+            // comboBoxChartType
+            // 
+            this.comboBoxChartType.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.comboBoxChartType.FormattingEnabled = true;
+            this.comboBoxChartType.Items.AddRange(new object[] {
+            "column",
+            "spline",
+            "line",
+            "point"});
+            this.comboBoxChartType.Location = new System.Drawing.Point(404, 51);
+            this.comboBoxChartType.Name = "comboBoxChartType";
+            this.comboBoxChartType.Size = new System.Drawing.Size(103, 21);
+            this.comboBoxChartType.TabIndex = 15;
+            this.comboBoxChartType.SelectedIndexChanged += new System.EventHandler(this.comboBoxChartType_SelectedIndexChanged);
+            // 
             // chartWeight
             // 
-            chartArea1.AxisX.Title = "Date";
-            chartArea1.AxisY.Title = "Kg";
-            chartArea1.Name = "ChartArea1";
-            this.chartWeight.ChartAreas.Add(chartArea1);
+            chartArea2.AxisX.Title = "Date";
+            chartArea2.AxisY.Title = "Kg";
+            chartArea2.Name = "ChartArea1";
+            this.chartWeight.ChartAreas.Add(chartArea2);
             this.chartWeight.Location = new System.Drawing.Point(316, 80);
             this.chartWeight.Name = "chartWeight";
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            series1.Name = "SeriesW";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chartWeight.Series.Add(series1);
-            this.chartWeight.Size = new System.Drawing.Size(345, 292);
+            series2.ChartArea = "ChartArea1";
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            series2.Name = "SeriesW";
+            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
+            series2.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.chartWeight.Series.Add(series2);
+            this.chartWeight.Size = new System.Drawing.Size(345, 307);
             this.chartWeight.TabIndex = 14;
             this.chartWeight.Text = "chart1";
-            title1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            title1.Name = "Title1";
-            title1.Text = "Personal statistics";
-            title2.Name = "Title2";
-            this.chartWeight.Titles.Add(title1);
-            this.chartWeight.Titles.Add(title2);
+            title3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            title3.Name = "Title1";
+            title3.Text = "Personal statistics";
+            title4.Name = "Title2";
+            this.chartWeight.Titles.Add(title3);
+            this.chartWeight.Titles.Add(title4);
             this.chartWeight.Click += new System.EventHandler(this.chart_Click);
             // 
             // comboBoxPeriod
@@ -308,20 +383,21 @@
             this.comboBoxPeriod.Items.AddRange(new object[] {
             "last week",
             "last month",
-            "las year"});
-            this.comboBoxPeriod.Location = new System.Drawing.Point(390, 40);
+            "last year"});
+            this.comboBoxPeriod.Location = new System.Drawing.Point(404, 24);
             this.comboBoxPeriod.Name = "comboBoxPeriod";
-            this.comboBoxPeriod.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxPeriod.Size = new System.Drawing.Size(103, 21);
             this.comboBoxPeriod.TabIndex = 13;
             this.comboBoxPeriod.SelectedIndexChanged += new System.EventHandler(this.comboBoxPeriod_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(325, 40);
+            this.label5.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(325, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 17);
+            this.label5.Size = new System.Drawing.Size(52, 17);
             this.label5.TabIndex = 12;
             this.label5.Text = "Period ";
             // 
@@ -462,6 +538,7 @@
             // 
             this.labelHeight.AutoSize = true;
             this.labelHeight.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHeight.ForeColor = System.Drawing.Color.Fuchsia;
             this.labelHeight.Location = new System.Drawing.Point(49, 64);
             this.labelHeight.Name = "labelHeight";
             this.labelHeight.Size = new System.Drawing.Size(45, 17);
@@ -472,6 +549,7 @@
             // 
             this.labelActiveLevel.AutoSize = true;
             this.labelActiveLevel.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelActiveLevel.ForeColor = System.Drawing.Color.Crimson;
             this.labelActiveLevel.Location = new System.Drawing.Point(49, 173);
             this.labelActiveLevel.Name = "labelActiveLevel";
             this.labelActiveLevel.Size = new System.Drawing.Size(90, 17);
@@ -482,6 +560,7 @@
             // 
             this.labelWeight.AutoSize = true;
             this.labelWeight.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWeight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.labelWeight.Location = new System.Drawing.Point(49, 115);
             this.labelWeight.Name = "labelWeight";
             this.labelWeight.Size = new System.Drawing.Size(47, 17);
@@ -492,6 +571,7 @@
             // 
             this.labelBirthDate.AutoSize = true;
             this.labelBirthDate.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBirthDate.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.labelBirthDate.Location = new System.Drawing.Point(49, 18);
             this.labelBirthDate.Name = "labelBirthDate";
             this.labelBirthDate.Size = new System.Drawing.Size(62, 17);
@@ -503,6 +583,7 @@
             this.labelHealthInf.AutoSize = true;
             this.labelHealthInf.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelHealthInf.Font = new System.Drawing.Font("MV Boli", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHealthInf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.labelHealthInf.Location = new System.Drawing.Point(79, 52);
             this.labelHealthInf.Name = "labelHealthInf";
             this.labelHealthInf.Size = new System.Drawing.Size(195, 30);
@@ -583,5 +664,10 @@
         private System.Windows.Forms.ComboBox comboBoxPeriod;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelStatistics;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBoxChartType;
+        private System.Windows.Forms.Label labelDate;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelBMI;
     }
 }
