@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelBMI = new System.Windows.Forms.Label();
             this.pictureBoxBMI = new System.Windows.Forms.PictureBox();
+            this.labelInform = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBMI)).BeginInit();
@@ -76,6 +77,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Bisque;
+            this.panel1.Controls.Add(this.labelInform);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
@@ -96,9 +98,9 @@
             this.label6.BackColor = System.Drawing.Color.Red;
             this.label6.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(119, 290);
+            this.label6.Location = new System.Drawing.Point(92, 290);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 16);
+            this.label6.Size = new System.Drawing.Size(76, 16);
             this.label6.TabIndex = 9;
             this.label6.Text = ">30";
             // 
@@ -119,7 +121,7 @@
             this.label4.ForeColor = System.Drawing.Color.Maroon;
             this.label4.Location = new System.Drawing.Point(61, 290);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 16);
+            this.label4.Size = new System.Drawing.Size(34, 16);
             this.label4.TabIndex = 7;
             // 
             // label3
@@ -156,16 +158,16 @@
             // 
             this.labelCustomBMI.Font = new System.Drawing.Font("MV Boli", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCustomBMI.ForeColor = System.Drawing.Color.Chocolate;
-            this.labelCustomBMI.Location = new System.Drawing.Point(37, 178);
+            this.labelCustomBMI.Location = new System.Drawing.Point(37, 134);
             this.labelCustomBMI.Name = "labelCustomBMI";
-            this.labelCustomBMI.Size = new System.Drawing.Size(115, 36);
+            this.labelCustomBMI.Size = new System.Drawing.Size(125, 32);
             this.labelCustomBMI.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(39, 154);
+            this.label1.Location = new System.Drawing.Point(39, 110);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 24);
             this.label1.TabIndex = 2;
@@ -192,6 +194,15 @@
             this.pictureBoxBMI.TabIndex = 0;
             this.pictureBoxBMI.TabStop = false;
             // 
+            // labelInform
+            // 
+            this.labelInform.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInform.ForeColor = System.Drawing.Color.Chocolate;
+            this.labelInform.Location = new System.Drawing.Point(37, 166);
+            this.labelInform.Name = "labelInform";
+            this.labelInform.Size = new System.Drawing.Size(121, 85);
+            this.labelInform.TabIndex = 10;
+            // 
             // BMI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +217,8 @@
             this.Name = "BMI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Statistics";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BMI_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BMI_MouseMove);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).EndInit();
@@ -230,5 +243,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelBMI;
         private System.Windows.Forms.PictureBox pictureBoxBMI;
+        private System.Windows.Forms.Label labelInform;
     }
 }

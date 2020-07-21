@@ -74,6 +74,8 @@
             this.panelHealthCardReg.Name = "panelHealthCardReg";
             this.panelHealthCardReg.Size = new System.Drawing.Size(800, 450);
             this.panelHealthCardReg.TabIndex = 4;
+            this.panelHealthCardReg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHealthCardReg_MouseDown);
+            this.panelHealthCardReg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHealthCardReg_MouseMove);
             // 
             // pictureBox1
             // 

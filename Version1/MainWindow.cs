@@ -79,8 +79,8 @@ namespace Version1
         {
             if (e.Button == MouseButtons.Left)
             {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
+                this.Left += e.X- lastPoint.X;
+                this.Top += e.Y- lastPoint.Y;
             }
         }
 
@@ -97,11 +97,6 @@ namespace Version1
             this.Close();
             HealthCardRegister healthCard = new HealthCardRegister(user);
             healthCard.ShowDialog();
-        }
-
-        private void chart_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBoxPeriod_SelectedIndexChanged(object sender, EventArgs e)
@@ -193,12 +188,6 @@ namespace Version1
                     db.closeConnection();
                 }
             }
-        }
-
-        private void labelStatistics_Click(object sender, EventArgs e)
-        {
-            BMI sc = new BMI(hc);
-            sc.ShowDialog();
         }
 
         private void comboBoxChartType_SelectedIndexChanged(object sender, EventArgs e)

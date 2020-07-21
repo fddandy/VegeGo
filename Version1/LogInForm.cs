@@ -52,26 +52,55 @@ namespace Version1
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             buttonRegister.ForeColor = Color.DarkGreen;
-            String login = loginField.Text;
-            String pass = passField.Text;
+            string login = loginField.Text;
+            string passFromText = passField.Text.ToString();
             DB db = new DB();
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            MySqlCommand command = new MySqlCommand("SELECT * from `person` where `login`=@uL AND `pass` = @uP", db.getConnection());
+            //DataTable table = new DataTable();
+            //MySqlDataAdapter adapter = new MySqlDataAdapter();
+            MySqlCommand command = new MySqlCommand("SELECT `id`, `name` , `surname`, `pass`, `userGuid` from `person`  where `login`=@uL", db.getConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
-            command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = pass;
-
-            adapter.SelectCommand = command;
-            if(adapter == null)
+            db.openConnection();
+            MySqlDataReader dr = command.ExecuteReader();
+            if(dr == null)
             {
-                MessageBox.Show("Please, provide data");
+                MessageBox.Show("Login is incorrect");
             }
-            else 
-            adapter.Fill(table);
-            if(table.Rows.Count > 0)
+            while(dr.Read())
+            {
+                byte[] salt = Convert.FromBase64String(dr.GetString("userGuid"));
+                byte[] dbPassword = Convert.FromBase64String(dr.GetString("pass"));
+                byte[] hashedPassword = Encryption.ComputeH(passFromText, salt);
+
+                string p1 = Convert.ToBase64String(dbPassword);
+                string p2 = Convert.ToBase64String(hashedPassword);
+                /*
+                //string dbPassword = Convert.ToString(dr["pass"]);
+                //  string dbUserGuid = Convert.ToString(dr["userGuid"]);
+                string dbPassword = dr.GetString("pass");
+                string dbUserGuid = dr.GetString("userGuid");
+
+                //string hashedOnlyPasswordFromField = Encryption.hashMD5(pass);
+                string hashedPassword = Encryption.hashMD5(passFromText, dbUserGuid);
+                */
+                if (p1.Equals(p2))
+                {
+                    user = new User(dr.GetInt32("id"), dr.GetString("name"), dr.GetString("surname"));
+                    this.Hide();
+                    MainWindow mainWindow = new MainWindow(user);
+                    mainWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Password is incorrect");
+                }   
+            }
+                    db.closeConnection();
+            /*
+            
+            if (table.Rows.Count > 0)
             {
                // string temp = "";
-                db.openConnection();
+               
                 MySqlCommand com = new MySqlCommand("SELECT `id`, `name`, `surname` from `person` where `login`=@uL AND `pass` = @uP", db.getConnection());
                 com.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
                 com.Parameters.Add("@uP", MySqlDbType.VarChar).Value = pass;
@@ -81,8 +110,7 @@ namespace Version1
                    // temp = reader.GetString("name") +" "+ reader.GetString("surname");
                     user = new User(reader.GetInt32("id"), reader.GetString("name"), reader.GetString("surname"));
                 }
-             
-                
+
                 this.Hide();
                 
                 MainWindow mainWindow = new MainWindow(user);
@@ -93,6 +121,7 @@ namespace Version1
             {
                 MessageBox.Show("Login or password are incorrect");
             }
+            */
         }
 
         private void RegisterForm_Cilck(object sender, EventArgs e)
@@ -107,7 +136,5 @@ namespace Version1
         {
             buttonRegister.ForeColor = Color.DarkGreen;
         }
-
-       
     }
 }

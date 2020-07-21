@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -168,27 +169,39 @@ namespace Version1
 
             if (userExists())
                 return;
-
-            DB db = new DB();
-            MySqlCommand command = new MySqlCommand("INSERT INTO `person` (`login`, `pass`, `name`, `surname`) VALUES (@login, @password, @name, @surname)", db.getConnection());
-            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
-            command.Parameters.Add("@password", MySqlDbType.VarChar).Value = passField.Text;
-            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = fNameField.Text;
-            command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = lNameField.Text; 
-            db.openConnection();
-
-            if (command.ExecuteNonQuery() == 1)
+           if (InsertUser(passField.Text.ToString()))
             {
                 MessageBox.Show("Account was succesfully created");
                 this.Visible = false;
                 LogInForm form = new LogInForm();
                 form.ShowDialog();
-            } 
+            }
             else
                 MessageBox.Show("Account was not created!");
 
+            /*
+                        DB db = new DB();
+                        MySqlCommand command = new MySqlCommand("INSERT INTO `person` (`login`, `pass`, `name`, `surname`) VALUES (@login, @password, @name, @surname)", db.getConnection());
+                        command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
+                        command.Parameters.Add("@password", MySqlDbType.VarChar).Value = Encryption.hashMD5(passField.Text.ToString());
+                        command.Parameters.Add("@name", MySqlDbType.VarChar).Value = fNameField.Text;
+                        command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = lNameField.Text; 
 
-            db.closeConnection();
+                        db.openConnection();
+
+                        if (command.ExecuteNonQuery() == 1)
+                        {
+                            MessageBox.Show("Account was succesfully created");
+                            this.Visible = false;
+                            LogInForm form = new LogInForm();
+                            form.ShowDialog();
+                        } 
+                        else
+                            MessageBox.Show("Account was not created!");
+
+                        db.closeConnection();
+
+                        */
         }
 
         public Boolean userExists()
@@ -222,5 +235,34 @@ namespace Version1
             buttonRegistBack.ForeColor = Color.Turquoise;
         }
 
+        public bool InsertUser(string password)
+        {
+            // Guid userGuid = Guid.NewGuid();
+            byte[] userGuid = Encryption.GenerateSalt(24);
+            byte[] hashPassBytes = Encryption.ComputeH(password, userGuid);
+            string hashPassword = Convert.ToBase64String(hashPassBytes); 
+            string saltToDb = Convert.ToBase64String(userGuid);
+
+            DB db = new DB();
+            MySqlCommand command = new MySqlCommand("INSERT INTO `person` (`login`, `pass`, `userGuid`, `name`, `surname`) VALUES (@login, @password, @userGuid, @name, @surname)", db.getConnection());
+            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
+            command.Parameters.Add("@password", MySqlDbType.VarChar).Value = hashPassword;
+            command.Parameters.Add("@userGuid", MySqlDbType.VarChar).Value = saltToDb;
+            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = fNameField.Text;
+            command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = lNameField.Text;
+            db.openConnection();
+            if (command.ExecuteNonQuery() == 1)
+            {
+                db.closeConnection();
+                return true;
+            }  
+            else
+            {
+                db.closeConnection();
+                return false;
+            }
+        }
+
+       
     }
 }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.labelStatistics = new System.Windows.Forms.Label();
@@ -128,7 +128,6 @@
             this.labelStatistics.TabIndex = 1;
             this.labelStatistics.Text = "Statistics";
             this.labelStatistics.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelStatistics.Click += new System.EventHandler(this.labelStatistics_Click);
             // 
             // panel6
             // 
@@ -353,28 +352,27 @@
             // 
             // chartWeight
             // 
-            chartArea2.AxisX.Title = "Date";
-            chartArea2.AxisY.Title = "Kg";
-            chartArea2.Name = "ChartArea1";
-            this.chartWeight.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.Title = "Date";
+            chartArea1.AxisY.Title = "Kg";
+            chartArea1.Name = "ChartArea1";
+            this.chartWeight.ChartAreas.Add(chartArea1);
             this.chartWeight.Location = new System.Drawing.Point(316, 80);
             this.chartWeight.Name = "chartWeight";
-            series2.ChartArea = "ChartArea1";
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            series2.Name = "SeriesW";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            series2.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chartWeight.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            series1.Name = "SeriesW";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.chartWeight.Series.Add(series1);
             this.chartWeight.Size = new System.Drawing.Size(345, 307);
             this.chartWeight.TabIndex = 14;
             this.chartWeight.Text = "chart1";
-            title3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            title3.Name = "Title1";
-            title3.Text = "Personal statistics";
-            title4.Name = "Title2";
-            this.chartWeight.Titles.Add(title3);
-            this.chartWeight.Titles.Add(title4);
-            this.chartWeight.Click += new System.EventHandler(this.chart_Click);
+            title1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            title1.Name = "Title1";
+            title1.Text = "Personal statistics";
+            title2.Name = "Title2";
+            this.chartWeight.Titles.Add(title1);
+            this.chartWeight.Titles.Add(title2);
             // 
             // comboBoxPeriod
             // 
