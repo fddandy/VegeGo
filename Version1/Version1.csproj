@@ -54,6 +54,12 @@
     <Compile Include="DB.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="HealthCard.cs" />
+    <Compile Include="DayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DayControl.Designer.cs">
+      <DependentUpon>DayControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="HealthCardRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </Compile>
     <Compile Include="Update.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="DayControl.resx">
+      <DependentUpon>DayControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HealthCardRegister.resx">
       <DependentUpon>HealthCardRegister.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +138,15 @@
   <ItemGroup>
     <Content Include="Images\food.jpg" />
     <Content Include="Resources\iconfinder_common-bookmark-book-open-outline-stroke_763427.png" />
+    <None Include="Resources\Webp.net-resizeimage %286%29.png" />
+    <None Include="Resources\Webp.net-resizeimage %285%29.png" />
+    <None Include="Resources\Webp.net-resizeimage %284%29.png" />
+    <None Include="Resources\Webp.net-resizeimage %283%29.png" />
+    <None Include="Resources\Webp.net-resizeimage %282%29.png" />
+    <None Include="Resources\Webp.net-resizeimage %281%29.png" />
+    <None Include="Resources\Webp.net-resizeimage.png" />
+    <None Include="Resources\salmon.jpg" />
+    <None Include="Resources\iconfinder_resolutions-18_897234.png" />
     <Content Include="Resources\VegeGo.jpg" />
     <None Include="Resources\iconfinder_key-password-passcode-access_2205205.png" />
     <None Include="Resources\iconfinder_user_female_172621.png" />

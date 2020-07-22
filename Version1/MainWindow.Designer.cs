@@ -38,8 +38,9 @@
             this.labelStatistics = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelMealTracker = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.sidePanel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LbCard = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -74,9 +75,17 @@
             this.labelWeight = new System.Windows.Forms.Label();
             this.labelBirthDate = new System.Windows.Forms.Label();
             this.labelHealthInf = new System.Windows.Forms.Label();
+            this.sidePanel3 = new System.Windows.Forms.Panel();
+            this.sidePanel4 = new System.Windows.Forms.Panel();
+            this.sidepanel1 = new System.Windows.Forms.Panel();
+            this.sidePanel5 = new System.Windows.Forms.Panel();
+            this.dayControl1 = new Version1.DayControl();
+            this.dayControl2 = new Version1.DayControl();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -108,6 +117,7 @@
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.sidePanel5);
             this.panel7.Controls.Add(this.labelStatistics);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 364);
@@ -132,6 +142,7 @@
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel6.Controls.Add(this.sidePanel4);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 271);
             this.panel6.Name = "panel6";
@@ -141,39 +152,53 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.sidePanel3);
+            this.panel5.Controls.Add(this.labelMealTracker);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 174);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(123, 97);
             this.panel5.TabIndex = 2;
             // 
-            // label2
+            // labelMealTracker
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 93);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Meal Tracker";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMealTracker.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMealTracker.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelMealTracker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelMealTracker.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMealTracker.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.labelMealTracker.Location = new System.Drawing.Point(0, 0);
+            this.labelMealTracker.Name = "labelMealTracker";
+            this.labelMealTracker.Size = new System.Drawing.Size(119, 93);
+            this.labelMealTracker.TabIndex = 0;
+            this.labelMealTracker.Text = "Meal Tracker";
+            this.labelMealTracker.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMealTracker.Click += new System.EventHandler(this.labelMealTracker_Click);
             // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.sidePanel2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 86);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(123, 88);
             this.panel4.TabIndex = 1;
             // 
+            // sidePanel2
+            // 
+            this.sidePanel2.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.sidePanel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidePanel2.Location = new System.Drawing.Point(0, 0);
+            this.sidePanel2.Name = "sidePanel2";
+            this.sidePanel2.Size = new System.Drawing.Size(10, 84);
+            this.sidePanel2.TabIndex = 19;
+            this.sidePanel2.Visible = false;
+            // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.sidepanel1);
             this.panel3.Controls.Add(this.LbCard);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -198,7 +223,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.labelBMI);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.labelLogAs);
@@ -216,15 +241,14 @@
             this.labelBMI.BackColor = System.Drawing.Color.PeachPuff;
             this.labelBMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelBMI.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelBMI.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelBMI.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBMI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelBMI.Location = new System.Drawing.Point(163, 12);
+            this.labelBMI.Location = new System.Drawing.Point(163, 9);
             this.labelBMI.Name = "labelBMI";
-            this.labelBMI.Size = new System.Drawing.Size(125, 25);
+            this.labelBMI.Size = new System.Drawing.Size(131, 28);
             this.labelBMI.TabIndex = 13;
             this.labelBMI.Text = "Count your BMI";
-            this.labelBMI.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelBMI.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelBMI.Click += new System.EventHandler(this.labelBMI_Click);
             // 
             // pictureBox1
@@ -233,7 +257,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(143, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(143, 48);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -275,7 +299,7 @@
             this.closeButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeButton.Location = new System.Drawing.Point(640, 0);
+            this.closeButton.Location = new System.Drawing.Point(638, 0);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(33, 31);
             this.closeButton.TabIndex = 3;
@@ -287,6 +311,7 @@
             this.panelMain.BackColor = System.Drawing.Color.Transparent;
             this.panelMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMain.BackgroundImage")));
             this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelMain.Controls.Add(this.dayControl2);
             this.panelMain.Controls.Add(this.labelDate);
             this.panelMain.Controls.Add(this.label7);
             this.panelMain.Controls.Add(this.label6);
@@ -338,6 +363,7 @@
             // comboBoxChartType
             // 
             this.comboBoxChartType.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.comboBoxChartType.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBoxChartType.FormattingEnabled = true;
             this.comboBoxChartType.Items.AddRange(new object[] {
             "column",
@@ -356,7 +382,7 @@
             chartArea1.AxisY.Title = "Kg";
             chartArea1.Name = "ChartArea1";
             this.chartWeight.ChartAreas.Add(chartArea1);
-            this.chartWeight.Location = new System.Drawing.Point(316, 80);
+            this.chartWeight.Location = new System.Drawing.Point(323, 87);
             this.chartWeight.Name = "chartWeight";
             series1.ChartArea = "ChartArea1";
             series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -377,6 +403,7 @@
             // comboBoxPeriod
             // 
             this.comboBoxPeriod.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.comboBoxPeriod.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBoxPeriod.FormattingEnabled = true;
             this.comboBoxPeriod.Items.AddRange(new object[] {
             "last week",
@@ -414,6 +441,7 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.dayControl1);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.labelAL);
@@ -588,12 +616,68 @@
             this.labelHealthInf.TabIndex = 0;
             this.labelHealthInf.Text = "Your health card";
             // 
+            // sidePanel3
+            // 
+            this.sidePanel3.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.sidePanel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidePanel3.Location = new System.Drawing.Point(0, 0);
+            this.sidePanel3.Name = "sidePanel3";
+            this.sidePanel3.Size = new System.Drawing.Size(10, 93);
+            this.sidePanel3.TabIndex = 20;
+            this.sidePanel3.Visible = false;
+            // 
+            // sidePanel4
+            // 
+            this.sidePanel4.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.sidePanel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidePanel4.Location = new System.Drawing.Point(0, 0);
+            this.sidePanel4.Name = "sidePanel4";
+            this.sidePanel4.Size = new System.Drawing.Size(10, 89);
+            this.sidePanel4.TabIndex = 20;
+            this.sidePanel4.Visible = false;
+            // 
+            // sidepanel1
+            // 
+            this.sidepanel1.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.sidepanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidepanel1.Location = new System.Drawing.Point(0, 0);
+            this.sidepanel1.Name = "sidepanel1";
+            this.sidepanel1.Size = new System.Drawing.Size(10, 82);
+            this.sidepanel1.TabIndex = 20;
+            this.sidepanel1.Visible = false;
+            // 
+            // sidePanel5
+            // 
+            this.sidePanel5.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.sidePanel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidePanel5.Location = new System.Drawing.Point(0, 0);
+            this.sidePanel5.Name = "sidePanel5";
+            this.sidePanel5.Size = new System.Drawing.Size(10, 89);
+            this.sidePanel5.TabIndex = 20;
+            this.sidePanel5.Visible = false;
+            // 
+            // dayControl1
+            // 
+            this.dayControl1.BackColor = System.Drawing.Color.Linen;
+            this.dayControl1.Location = new System.Drawing.Point(-190, -172);
+            this.dayControl1.Name = "dayControl1";
+            this.dayControl1.Size = new System.Drawing.Size(675, 401);
+            this.dayControl1.TabIndex = 17;
+            // 
+            // dayControl2
+            // 
+            this.dayControl2.BackColor = System.Drawing.Color.Linen;
+            this.dayControl2.Location = new System.Drawing.Point(0, -2);
+            this.dayControl2.Name = "dayControl2";
+            this.dayControl2.Size = new System.Drawing.Size(675, 401);
+            this.dayControl2.TabIndex = 19;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackgroundImage = global::Version1.Properties.Resources.food1;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel2);
@@ -606,7 +690,9 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseMove);
             this.panel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -638,7 +724,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelMealTracker;
         private System.Windows.Forms.Label LbCard;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panel8;
@@ -667,5 +753,12 @@
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelBMI;
+        private System.Windows.Forms.Panel sidePanel2;
+        private System.Windows.Forms.Panel sidePanel5;
+        private System.Windows.Forms.Panel sidePanel4;
+        private System.Windows.Forms.Panel sidePanel3;
+        private System.Windows.Forms.Panel sidepanel1;
+        private DayControl dayControl2;
+        private DayControl dayControl1;
     }
 }

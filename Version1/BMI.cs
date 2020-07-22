@@ -15,13 +15,27 @@ namespace Version1
         public BMI(HealthCard hc)
         {
             InitializeComponent();
-            double heightM = hc.Height / 100.0;
-            double bmi1 = hc.Weight / heightM / heightM;
-            labelCustomBMI.Text = bmi1.ToString();
-            trackBar.Value = Convert.ToInt32(bmi1);
-            colorResult(bmi1);
+            if(hc.Height == 0 || hc.Weight == 0.0)
+            {
+                labelCustomBMI.Text = "";
+                trackBar.Value = 14;
+            }
+            else
+            {
+                double bmi1 = countBMI(hc.Height, hc.Weight);
+                labelCustomBMI.Text = bmi1.ToString();
+                trackBar.Value = Convert.ToInt32(bmi1);
+                colorResult(bmi1);
+            } 
         }
 
+        private double countBMI(double height, double weight)
+        {
+            double heightM = height / 100.0;
+            double bmi = weight / heightM / heightM;
+           
+            return bmi;
+        }
         private void colorResult(double bmi)
         {
                 if( bmi < 18.5)

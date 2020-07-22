@@ -55,8 +55,6 @@ namespace Version1
             string login = loginField.Text;
             string passFromText = passField.Text.ToString();
             DB db = new DB();
-            //DataTable table = new DataTable();
-            //MySqlDataAdapter adapter = new MySqlDataAdapter();
             MySqlCommand command = new MySqlCommand("SELECT `id`, `name` , `surname`, `pass`, `userGuid` from `person`  where `login`=@uL", db.getConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
             db.openConnection();
@@ -73,15 +71,7 @@ namespace Version1
 
                 string p1 = Convert.ToBase64String(dbPassword);
                 string p2 = Convert.ToBase64String(hashedPassword);
-                /*
-                //string dbPassword = Convert.ToString(dr["pass"]);
-                //  string dbUserGuid = Convert.ToString(dr["userGuid"]);
-                string dbPassword = dr.GetString("pass");
-                string dbUserGuid = dr.GetString("userGuid");
-
-                //string hashedOnlyPasswordFromField = Encryption.hashMD5(pass);
-                string hashedPassword = Encryption.hashMD5(passFromText, dbUserGuid);
-                */
+                
                 if (p1.Equals(p2))
                 {
                     user = new User(dr.GetInt32("id"), dr.GetString("name"), dr.GetString("surname"));
@@ -95,33 +85,7 @@ namespace Version1
                 }   
             }
                     db.closeConnection();
-            /*
-            
-            if (table.Rows.Count > 0)
-            {
-               // string temp = "";
-               
-                MySqlCommand com = new MySqlCommand("SELECT `id`, `name`, `surname` from `person` where `login`=@uL AND `pass` = @uP", db.getConnection());
-                com.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
-                com.Parameters.Add("@uP", MySqlDbType.VarChar).Value = pass;
-                MySqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
-                {
-                   // temp = reader.GetString("name") +" "+ reader.GetString("surname");
-                    user = new User(reader.GetInt32("id"), reader.GetString("name"), reader.GetString("surname"));
-                }
-
-                this.Hide();
-                
-                MainWindow mainWindow = new MainWindow(user);
-                mainWindow.Show();
-                db.closeConnection();
-            }
-            else
-            {
-                MessageBox.Show("Login or password are incorrect");
-            }
-            */
+     
         }
 
         private void RegisterForm_Cilck(object sender, EventArgs e)

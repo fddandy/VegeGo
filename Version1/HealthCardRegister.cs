@@ -86,6 +86,7 @@ namespace Version1
                     {
                         MessageBox.Show("Data was succesfully inserted", "Adding");
                         createHealthCard(hc, db);
+                        updateHistory(hc, db);
                         this.Close();
                         MainWindow mw = new MainWindow(user);
                         mw.ShowDialog();

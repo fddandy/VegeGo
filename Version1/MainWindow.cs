@@ -20,7 +20,10 @@ namespace Version1
             InitializeComponent();
             labelLogAs.Text = user.Name +" "+ user.SurName;
             this.user = user;
+            sidePanel2.Height = labelMealTracker.Height;
+            sidePanel2.Top = labelMealTracker.Top;
             loadHealthCard();
+            sidepanel1.Visible = true;
         }
 
         private void loadHealthCard()
@@ -86,9 +89,15 @@ namespace Version1
 
         private void LbCard_MouseClick(object sender, MouseEventArgs e)
         {
+
+            sidepanel1.Visible = true;
+            sidePanel2.Visible = false;
+            sidePanel3.Visible = false;
+            sidePanel4.Visible = false;
+            sidePanel5.Visible = false;
             panelMain.Visible = true;
             comboBoxPeriod.Text = "-----select-----";
-            comboBoxChartType.SelectedText = "column";
+            comboBoxChartType.SelectedIndex = 2;
             labelDate.Text = DateTime.Now.Date.ToString();
         }
 
@@ -224,5 +233,18 @@ namespace Version1
             BMI bmi = new BMI(hc);
             bmi.ShowDialog();
         }
+
+        private void labelMealTracker_Click(object sender, EventArgs e)
+        {
+            sidepanel1.Visible = false;
+            sidePanel2.Visible = false;
+            sidePanel3.Visible = true;
+            sidePanel4.Visible = false;
+            sidePanel5.Visible = false;
+            panelMain.SendToBack();
+            dayControl2.BringToFront();
+        }
+
+        
     }
 }
