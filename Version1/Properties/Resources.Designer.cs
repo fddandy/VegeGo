@@ -83,6 +83,26 @@ namespace Version1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap he {
+            get {
+                object obj = ResourceManager.GetObject("he", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Small_40 {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Small-40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_key_password_passcode_access_2205205 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_key-password-passcode-access_2205205", resourceCulture);
@@ -113,9 +133,29 @@ namespace Version1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap kcal {
+            get {
+                object obj = ResourceManager.GetObject("kcal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap salmon {
             get {
                 object obj = ResourceManager.GetObject("salmon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap water {
+            get {
+                object obj = ResourceManager.GetObject("water", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,6 +226,16 @@ namespace Version1.Properties {
         internal static System.Drawing.Bitmap Webp_net_resizeimage__6_ {
             get {
                 object obj = ResourceManager.GetObject("Webp.net-resizeimage (6)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap woda {
+            get {
+                object obj = ResourceManager.GetObject("woda", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

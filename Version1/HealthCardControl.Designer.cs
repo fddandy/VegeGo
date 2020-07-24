@@ -1,16 +1,16 @@
 ﻿namespace Version1
 {
-    partial class MainWindow
+    partial class HealthCardControl
     {
-        /// <summary>
-        /// Required designer variable.
+        /// <summary> 
+        /// Обязательная переменная конструктора.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
+        /// <summary> 
+        /// Освободить все используемые ресурсы.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,41 +20,21 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Код, автоматически созданный конструктором компонентов
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// <summary> 
+        /// Требуемый метод для поддержки конструктора — не изменяйте 
+        /// содержимое этого метода с помощью редактора кода.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HealthCardControl));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.sidePanel5 = new System.Windows.Forms.Panel();
-            this.labelStatistics = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.sidePanel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.sidePanel3 = new System.Windows.Forms.Panel();
-            this.labelMealTracker = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.sidePanel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.sidepanel1 = new System.Windows.Forms.Panel();
-            this.LbCard = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.labelBMI = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelLogAs = new System.Windows.Forms.Label();
-            this.labelLoggedAs = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.closeButton = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+           // this.dayControl2 = new Version1.DayControl();
             this.labelDate = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -79,14 +59,6 @@
             this.labelWeight = new System.Windows.Forms.Label();
             this.labelBirthDate = new System.Windows.Forms.Label();
             this.labelHealthInf = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartWeight)).BeginInit();
             this.panel8.SuspendLayout();
@@ -96,259 +68,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.panel7);
-            this.panel1.Controls.Add(this.panel6);
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(125, 450);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel7
-            // 
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel7.Controls.Add(this.sidePanel5);
-            this.panel7.Controls.Add(this.labelStatistics);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 364);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(123, 93);
-            this.panel7.TabIndex = 4;
-            // 
-            // sidePanel5
-            // 
-            this.sidePanel5.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.sidePanel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidePanel5.Location = new System.Drawing.Point(0, 0);
-            this.sidePanel5.Name = "sidePanel5";
-            this.sidePanel5.Size = new System.Drawing.Size(10, 89);
-            this.sidePanel5.TabIndex = 20;
-            this.sidePanel5.Visible = false;
-            // 
-            // labelStatistics
-            // 
-            this.labelStatistics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelStatistics.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelStatistics.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStatistics.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.labelStatistics.Location = new System.Drawing.Point(0, 0);
-            this.labelStatistics.Name = "labelStatistics";
-            this.labelStatistics.Size = new System.Drawing.Size(119, 89);
-            this.labelStatistics.TabIndex = 1;
-            this.labelStatistics.Text = "Statistics";
-            this.labelStatistics.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel6
-            // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel6.Controls.Add(this.sidePanel4);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 271);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(123, 93);
-            this.panel6.TabIndex = 3;
-            // 
-            // sidePanel4
-            // 
-            this.sidePanel4.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.sidePanel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidePanel4.Location = new System.Drawing.Point(0, 0);
-            this.sidePanel4.Name = "sidePanel4";
-            this.sidePanel4.Size = new System.Drawing.Size(10, 89);
-            this.sidePanel4.TabIndex = 20;
-            this.sidePanel4.Visible = false;
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.sidePanel3);
-            this.panel5.Controls.Add(this.labelMealTracker);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 174);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(123, 97);
-            this.panel5.TabIndex = 2;
-            // 
-            // sidePanel3
-            // 
-            this.sidePanel3.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.sidePanel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidePanel3.Location = new System.Drawing.Point(0, 0);
-            this.sidePanel3.Name = "sidePanel3";
-            this.sidePanel3.Size = new System.Drawing.Size(10, 93);
-            this.sidePanel3.TabIndex = 20;
-            this.sidePanel3.Visible = false;
-            // 
-            // labelMealTracker
-            // 
-            this.labelMealTracker.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelMealTracker.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelMealTracker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelMealTracker.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMealTracker.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.labelMealTracker.Location = new System.Drawing.Point(0, 0);
-            this.labelMealTracker.Name = "labelMealTracker";
-            this.labelMealTracker.Size = new System.Drawing.Size(119, 93);
-            this.labelMealTracker.TabIndex = 0;
-            this.labelMealTracker.Text = "Meal Tracker";
-            this.labelMealTracker.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelMealTracker.MouseClick += new System.Windows.Forms.MouseEventHandler(this.labelMealTracker_MouseClick);
-            // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.sidePanel2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 86);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(123, 88);
-            this.panel4.TabIndex = 1;
-            // 
-            // sidePanel2
-            // 
-            this.sidePanel2.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.sidePanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidePanel2.Location = new System.Drawing.Point(0, 0);
-            this.sidePanel2.Name = "sidePanel2";
-            this.sidePanel2.Size = new System.Drawing.Size(10, 84);
-            this.sidePanel2.TabIndex = 19;
-            this.sidePanel2.Visible = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.sidepanel1);
-            this.panel3.Controls.Add(this.LbCard);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(123, 86);
-            this.panel3.TabIndex = 0;
-            // 
-            // sidepanel1
-            // 
-            this.sidepanel1.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.sidepanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidepanel1.Location = new System.Drawing.Point(0, 0);
-            this.sidepanel1.Name = "sidepanel1";
-            this.sidepanel1.Size = new System.Drawing.Size(10, 82);
-            this.sidepanel1.TabIndex = 20;
-            this.sidepanel1.Visible = false;
-            // 
-            // LbCard
-            // 
-            this.LbCard.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LbCard.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LbCard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LbCard.Location = new System.Drawing.Point(0, 0);
-            this.LbCard.Name = "LbCard";
-            this.LbCard.Size = new System.Drawing.Size(119, 82);
-            this.LbCard.TabIndex = 0;
-            this.LbCard.Text = "Health information";
-            this.LbCard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LbCard.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LbCard_MouseClick);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.labelBMI);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.labelLogAs);
-            this.panel2.Controls.Add(this.labelLoggedAs);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.closeButton);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(125, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(675, 52);
-            this.panel2.TabIndex = 1;
-            // 
-            // labelBMI
-            // 
-            this.labelBMI.BackColor = System.Drawing.Color.PeachPuff;
-            this.labelBMI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelBMI.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelBMI.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBMI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelBMI.Location = new System.Drawing.Point(163, 9);
-            this.labelBMI.Name = "labelBMI";
-            this.labelBMI.Size = new System.Drawing.Size(131, 28);
-            this.labelBMI.TabIndex = 13;
-            this.labelBMI.Text = "Count your BMI";
-            this.labelBMI.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelBMI.Click += new System.EventHandler(this.labelBMI_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(143, 48);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // labelLogAs
-            // 
-            this.labelLogAs.AutoSize = true;
-            this.labelLogAs.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLogAs.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.labelLogAs.Location = new System.Drawing.Point(474, 9);
-            this.labelLogAs.Name = "labelLogAs";
-            this.labelLogAs.Size = new System.Drawing.Size(60, 21);
-            this.labelLogAs.TabIndex = 6;
-            this.labelLogAs.Text = "label2";
-            // 
-            // labelLoggedAs
-            // 
-            this.labelLoggedAs.AutoSize = true;
-            this.labelLoggedAs.Location = new System.Drawing.Point(508, 15);
-            this.labelLoggedAs.Name = "labelLoggedAs";
-            this.labelLoggedAs.Size = new System.Drawing.Size(0, 13);
-            this.labelLoggedAs.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Brown;
-            this.label1.Location = new System.Drawing.Point(325, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 19);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "You are logged in as  ";
-            // 
-            // closeButton
-            // 
-            this.closeButton.AutoSize = true;
-            this.closeButton.BackColor = System.Drawing.Color.SandyBrown;
-            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeButton.Location = new System.Drawing.Point(638, 0);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(33, 31);
-            this.closeButton.TabIndex = 3;
-            this.closeButton.Text = "X";
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click_1);
-            // 
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.Transparent;
             this.panelMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMain.BackgroundImage")));
             this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelMain.Controls.Add(this.dayControl2);
             this.panelMain.Controls.Add(this.labelDate);
             this.panelMain.Controls.Add(this.label7);
             this.panelMain.Controls.Add(this.label6);
@@ -359,11 +84,19 @@
             this.panelMain.Controls.Add(this.buttonEditHC);
             this.panelMain.Controls.Add(this.panel8);
             this.panelMain.Controls.Add(this.labelHealthInf);
-            this.panelMain.Location = new System.Drawing.Point(125, 49);
+            this.panelMain.Location = new System.Drawing.Point(-16, -6);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(675, 401);
-            this.panelMain.TabIndex = 2;
+            this.panelMain.TabIndex = 3;
             this.panelMain.Visible = false;
+            // 
+            // dayControl2
+            // 
+            this.dayControl2.BackColor = System.Drawing.Color.Linen;
+            this.dayControl2.Location = new System.Drawing.Point(665, -2);
+            this.dayControl2.Name = "dayControl2";
+            this.dayControl2.Size = new System.Drawing.Size(10, 401);
+            this.dayControl2.TabIndex = 19;
             // 
             // labelDate
             // 
@@ -411,7 +144,6 @@
             this.comboBoxChartType.Name = "comboBoxChartType";
             this.comboBoxChartType.Size = new System.Drawing.Size(103, 21);
             this.comboBoxChartType.TabIndex = 15;
-            this.comboBoxChartType.SelectedIndexChanged += new System.EventHandler(this.comboBoxChartType_SelectedIndexChanged);
             // 
             // chartWeight
             // 
@@ -419,7 +151,7 @@
             chartArea1.AxisY.Title = "Kg";
             chartArea1.Name = "ChartArea1";
             this.chartWeight.ChartAreas.Add(chartArea1);
-            this.chartWeight.Location = new System.Drawing.Point(323, 87);
+            this.chartWeight.Location = new System.Drawing.Point(312, 92);
             this.chartWeight.Name = "chartWeight";
             series1.ChartArea = "ChartArea1";
             series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -474,7 +206,6 @@
             this.buttonEditHC.TabIndex = 2;
             this.buttonEditHC.Text = "Edit";
             this.buttonEditHC.UseVisualStyleBackColor = false;
-            this.buttonEditHC.Click += new System.EventHandler(this.buttonEditHC_Click);
             // 
             // panel8
             // 
@@ -652,31 +383,13 @@
             this.labelHealthInf.TabIndex = 0;
             this.labelHealthInf.Text = "Your health card";
             // 
-            // MainWindow
+            // HealthCardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelMain);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "MainWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainWindow";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseMove);
-            this.panel1.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Name = "HealthCardControl";
+            this.Size = new System.Drawing.Size(643, 388);
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartWeight)).EndInit();
@@ -692,51 +405,31 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label labelLoggedAs;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label closeButton;
-        private System.Windows.Forms.Label labelLogAs;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label labelMealTracker;
-        private System.Windows.Forms.Label LbCard;
         private System.Windows.Forms.Panel panelMain;
+        private DayControl dayControl2;
+        private System.Windows.Forms.Label labelDate;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBoxChartType;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartWeight;
+        private System.Windows.Forms.ComboBox comboBoxPeriod;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonEditHC;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelAL;
+        private System.Windows.Forms.Label labelW;
+        private System.Windows.Forms.Label labelH;
+        private System.Windows.Forms.Label labelBD;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label labelHeight;
         private System.Windows.Forms.Label labelActiveLevel;
         private System.Windows.Forms.Label labelWeight;
         private System.Windows.Forms.Label labelBirthDate;
         private System.Windows.Forms.Label labelHealthInf;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button buttonEditHC;
-        private System.Windows.Forms.Label labelAL;
-        private System.Windows.Forms.Label labelW;
-        private System.Windows.Forms.Label labelH;
-        private System.Windows.Forms.Label labelBD;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartWeight;
-        private System.Windows.Forms.ComboBox comboBoxPeriod;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label labelStatistics;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBoxChartType;
-        private System.Windows.Forms.Label labelDate;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label labelBMI;
-        private System.Windows.Forms.Panel sidePanel2;
-        private System.Windows.Forms.Panel sidePanel5;
-        private System.Windows.Forms.Panel sidePanel4;
-        private System.Windows.Forms.Panel sidePanel3;
-        private System.Windows.Forms.Panel sidepanel1;
     }
 }

@@ -12,18 +12,43 @@ namespace Version1
 {
     public partial class DayControl : UserControl
     {
-        public DayControl()
+        WaterControl wc;
+        public delegate string DayEvent();
+        public event DayEvent DayWaterCombo;
+        public event DayEvent DayWaterDay;
+        public event DayEvent DayWaterNecc;
+        public DayControl(WaterControl wc)
         {
             InitializeComponent();
+            this.wc = wc;
             sidePanel.Height = buttonWater.Height;
             sidePanel.Top = buttonWater.Top;
+           //waterControl.WaterNecc += WaterControl_WaterNecc;
+           // waterControl.WaterDay += WaterControl_WaterDay;
+           // waterControl.ComboBoxValueChanged += WaterControl_ComboBoxValueChanged;
+           // wc.comboBoxWater
+        }
 
+        private string WaterControl_ComboBoxValueChanged()
+        {
+            return DayWaterCombo();
+        }
+
+        private string WaterControl_WaterDay()
+        {
+           return  DayWaterDay();
+        }
+
+        private string WaterControl_WaterNecc()
+        {
+           return  DayWaterNecc();
         }
 
         private void buttonWater_Click(object sender, EventArgs e)
         {
             sidePanel.Height = buttonWater.Height;
             sidePanel.Top = buttonWater.Top;
+            //waterControl.BringToFront();
         }
 
         private void buttonKcak_Click(object sender, EventArgs e)

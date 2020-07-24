@@ -15,17 +15,52 @@ namespace Version1
     {
         User user;
         HealthCard hc = new HealthCard();
+        List<Day> list;
         public MainWindow(User user)
         {
             InitializeComponent();
-            labelLogAs.Text = user.Name +" "+ user.SurName;
+            labelLogAs.Text = user.Name + " " + user.SurName;
             this.user = user;
+            
             sidePanel2.Height = labelMealTracker.Height;
             sidePanel2.Top = labelMealTracker.Top;
             loadHealthCard();
+            list = createDaysList();
             sidepanel1.Visible = true;
+            //dayControl2.DayWaterNecc += DayControl2_DayWaterNecc;
+            //dayControl2.DayWaterDay += DayControl2_DayWaterDay;
+            //dayControl2.DayWaterCombo += DayControl2_DayWaterCombo;
         }
 
+        private List<Day> createDaysList()
+        {
+            DB db = new DB();
+            List<Day> list = new List<Day>();
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `day` WHERE `id_person` = @uID", db.getConnection());
+            command.Parameters.Add("@uID", MySqlDbType.Int32).Value = user.Id;
+            db.openConnection();
+            MySqlDataReader rd = command.ExecuteReader();
+            while(rd.Read())
+            {
+                Day day = new Day();
+                day.Id = rd.GetInt32("id");
+                day.Date = rd.GetDateTime("date").Date;
+                day.Water = rd.GetFloat("water");
+                day.Kcal = rd.GetInt32("kcal");
+                day.Protein = rd.GetFloat("protein");
+                day.Fat = rd.GetFloat("fat");
+                day.Carb = rd.GetFloat("carb");
+                day.Fiber = rd.GetFloat("fiber");
+                day.Exercise = rd.GetString("exercise");
+                day.Id_Person=rd.GetInt32("id_person");
+                list.Add(day);
+            }
+
+            db.closeConnection();
+            return list;
+        }
+
+     
         private void loadHealthCard()
         {
             DB db = new DB();
@@ -89,7 +124,7 @@ namespace Version1
 
         private void LbCard_MouseClick(object sender, MouseEventArgs e)
         {
-
+            panelMain.BringToFront();
             sidepanel1.Visible = true;
             sidePanel2.Visible = false;
             sidePanel3.Visible = false;
@@ -99,6 +134,7 @@ namespace Version1
             comboBoxPeriod.Text = "-----select-----";
             comboBoxChartType.SelectedIndex = 2;
             labelDate.Text = DateTime.Now.Date.ToString();
+            
         }
 
         private void buttonEditHC_Click(object sender, EventArgs e)
@@ -229,22 +265,23 @@ namespace Version1
 
         private void labelBMI_Click(object sender, EventArgs e)
         {
-            this.Close();
-            BMI bmi = new BMI(hc);
+            this.Visible = false;
+            BMI bmi = new BMI(hc, user);
             bmi.ShowDialog();
         }
 
-        private void labelMealTracker_Click(object sender, EventArgs e)
+        private void labelMealTracker_MouseClick(object sender, MouseEventArgs e)
         {
+            DayForm dayForm = new DayForm(user, hc);
+            dayForm.ShowDialog();
+            dayForm.BringToFront();
+            panelMain.SendToBack();
+            
             sidepanel1.Visible = false;
             sidePanel2.Visible = false;
             sidePanel3.Visible = true;
             sidePanel4.Visible = false;
             sidePanel5.Visible = false;
-            panelMain.SendToBack();
-            dayControl2.BringToFront();
         }
-
-        
     }
 }

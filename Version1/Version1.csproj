@@ -51,6 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Day.cs" />
+    <Compile Include="DayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DayForm.Designer.cs">
+      <DependentUpon>DayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DB.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="HealthCard.cs" />
@@ -60,11 +67,23 @@
     <Compile Include="DayControl.Designer.cs">
       <DependentUpon>DayControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="HealthCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HealthCardControl.Designer.cs">
+      <DependentUpon>HealthCardControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="HealthCardRegister.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HealthCardRegister.Designer.cs">
       <DependentUpon>HealthCardRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KcalControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KcalControl.Designer.cs">
+      <DependentUpon>KcalControl.cs</DependentUpon>
     </Compile>
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
@@ -94,11 +113,26 @@
     </Compile>
     <Compile Include="Update.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="WaterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WaterControl.Designer.cs">
+      <DependentUpon>WaterControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DayControl.resx">
       <DependentUpon>DayControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DayForm.resx">
+      <DependentUpon>DayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HealthCardControl.resx">
+      <DependentUpon>HealthCardControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HealthCardRegister.resx">
       <DependentUpon>HealthCardRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KcalControl.resx">
+      <DependentUpon>KcalControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
@@ -122,6 +156,9 @@
     <EmbeddedResource Include="BMI.resx">
       <DependentUpon>BMI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WaterControl.resx">
+      <DependentUpon>WaterControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -137,7 +174,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\food.jpg" />
+    <None Include="Resources\Icon-Small-40.png" />
+    <None Include="Resources\he.jpg" />
     <Content Include="Resources\iconfinder_common-bookmark-book-open-outline-stroke_763427.png" />
+    <None Include="Resources\woda.jpg" />
+    <None Include="Resources\water.jpg" />
     <None Include="Resources\Webp.net-resizeimage %286%29.png" />
     <None Include="Resources\Webp.net-resizeimage %285%29.png" />
     <None Include="Resources\Webp.net-resizeimage %284%29.png" />
@@ -147,6 +188,7 @@
     <None Include="Resources\Webp.net-resizeimage.png" />
     <None Include="Resources\salmon.jpg" />
     <None Include="Resources\iconfinder_resolutions-18_897234.png" />
+    <None Include="Resources\kcal.jpg" />
     <Content Include="Resources\VegeGo.jpg" />
     <None Include="Resources\iconfinder_key-password-passcode-access_2205205.png" />
     <None Include="Resources\iconfinder_user_female_172621.png" />

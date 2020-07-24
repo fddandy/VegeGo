@@ -117,59 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="salmon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\salmon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Webp.net-resizeimage (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Webp.net-resizeimage (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="food" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\food.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="water" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\water.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconfinder_key-password-passcode-access_2205205" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconfinder_key-password-passcode-access_2205205.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Webp.net-resizeimage (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Webp.net-resizeimage (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="food1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\food1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="woda" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\woda.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Webp.net-resizeimage (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Webp.net-resizeimage (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon-Small-40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-Small-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconfinder_user_female_172621" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconfinder_user_female_172621.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Webp.net-resizeimage (6)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Webp.net-resizeimage (6).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconfinder_resolutions-18_897234" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconfinder_resolutions-18_897234.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Webp.net-resizeimage (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Webp.net-resizeimage (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Webp.net-resizeimage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Webp.net-resizeimage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="kcal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kcal.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Webp.net-resizeimage (5)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Webp.net-resizeimage (5).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="he" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\he.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonWater.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        YjCB/gAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

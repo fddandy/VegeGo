@@ -12,9 +12,11 @@ namespace Version1
 {
     public partial class BMI : Form
     {
-        public BMI(HealthCard hc)
+        User user;
+        public BMI(HealthCard hc, User user )
         {
             InitializeComponent();
+            this.user = user;
             if(hc.Height == 0 || hc.Weight == 0.0)
             {
                 labelCustomBMI.Text = "";
@@ -66,6 +68,8 @@ namespace Version1
         private void buttonRegistBack_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+            MainWindow mw = new MainWindow(user);
+            mw.ShowDialog();            
         }
         Point lastPoint;
         private void BMI_MouseDown(object sender, MouseEventArgs e)

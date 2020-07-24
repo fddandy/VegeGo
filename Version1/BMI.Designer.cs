@@ -32,6 +32,7 @@
             this.closeButton = new System.Windows.Forms.Label();
             this.buttonRegistBack = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelInform = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelBMI = new System.Windows.Forms.Label();
             this.pictureBoxBMI = new System.Windows.Forms.PictureBox();
-            this.labelInform = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBMI)).BeginInit();
@@ -92,6 +92,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(707, 334);
             this.panel1.TabIndex = 18;
+            // 
+            // labelInform
+            // 
+            this.labelInform.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInform.ForeColor = System.Drawing.Color.Chocolate;
+            this.labelInform.Location = new System.Drawing.Point(37, 166);
+            this.labelInform.Name = "labelInform";
+            this.labelInform.Size = new System.Drawing.Size(121, 85);
+            this.labelInform.TabIndex = 10;
             // 
             // label6
             // 
@@ -193,15 +202,6 @@
             this.pictureBoxBMI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxBMI.TabIndex = 0;
             this.pictureBoxBMI.TabStop = false;
-            // 
-            // labelInform
-            // 
-            this.labelInform.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInform.ForeColor = System.Drawing.Color.Chocolate;
-            this.labelInform.Location = new System.Drawing.Point(37, 166);
-            this.labelInform.Name = "labelInform";
-            this.labelInform.Size = new System.Drawing.Size(121, 85);
-            this.labelInform.TabIndex = 10;
             // 
             // BMI
             // 
