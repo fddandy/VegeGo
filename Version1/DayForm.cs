@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,6 +76,7 @@ namespace Version1
             void initializeLabelDayWater()
             {
                 string water = "0";
+                WaterControl.Instance.labelWaterDay.Text = water;
                 foreach (Day day in list)
                 {
                     if (day.Date.Equals(DateTime.Now.Date))
@@ -98,6 +101,7 @@ namespace Version1
             {
                 case 0:
                     {
+                        WaterControl.Instance.labelWaterResult.Text = "No data inserted";
                         ShowStaticstics(0);
                         break;
                     }
@@ -207,64 +211,245 @@ namespace Version1
                 panelMain.Controls.Add(KcalControl.Instance);
                 KcalControl.Instance.Dock = DockStyle.Fill;
                 KcalControl.Instance.BringToFront();
-              //  initializeNeccButt();
+              
                 KcalControl.Instance.ShowChart += Instance_ShowChart;
+                KcalControl.Instance.RadioButtonChanged += Instance_RadioButtonChanged;
+                
             }
             else
                 KcalControl.Instance.BringToFront();
                
         }
 
-        private void initializeNeccButt()
+        private void Instance_RadioButtonChanged(string sexSelected)
         {
-            throw new NotImplementedException();
+            //labelKcalNecc 
+            double ppm = 0.0;
+            int age = DateTime.Now.Year - hc.BirthDate.Year;
+            if (sexSelected.Equals("Male"))
+            {
+                ppm = 66.5 +13.75 * hc.Weight + 5.003 * hc.Height - 6.775 * age;
+            }
+            else if(sexSelected.Equals("Female"))
+            {
+                ppm = 655.1 + 9.563 * hc.Weight + 1.85 * hc.Height - 4.676 * age;
+            }
+            KcalControl.Instance.labelKcalNecc.Text= ((int)(Math.Round(ppm * LevelOfActiveness(hc)))).ToString();
+            if (KcalControl.Instance.dataGridViewKcal.DataSource != null)
+            {
+                Instance_ShowChart();
+            }
+           
+        }
+
+        private double LevelOfActiveness(HealthCard hc)
+        {
+            double PAL = 0.0;
+            switch (hc.ActLevel)
+            {
+                case "Sedentary: little or no exercise":
+                    {
+                        PAL = 1.2;
+                        break;
+                    }
+                case "Light: exercise 1-3 times a week":
+                    {
+                        PAL = 1.3;
+                        break;
+                    }
+                case "Moderate: exercise 4-5 times a week":
+                    {
+                        PAL = 1.4;
+                        break;
+                    }
+                case "Active: daily exercise or intense exercise 3-4 times a week":
+                    {
+                        PAL = 1.5;
+                        break;
+
+                    }
+                case "Very active: intense exercise 6-7 times a week":
+                    {
+                        PAL = 1.6;
+                        break;
+                    }
+                case "Extra active: very intense exercise daily or physical job":
+                    {
+                        PAL = 1.7;
+                        break;
+                    }
+                default:
+                    {
+                        PAL = 1.2;
+                        break;
+                    }
+            }
+            return PAL;
         }
 
         private void Instance_ShowChart()
         {
             KcalControl.Instance.dataGridViewKcal.DataSource = getKcalList();
+            DataGridViewCellStyle style = new DataGridViewCellStyle();
+            foreach(DataGridViewRow item in KcalControl.Instance.dataGridViewKcal.Rows) //KcalControl.Instance.dataGridViewKcal lub getKcalList().Rows
+            {
+                if(Convert.ToInt32(item.Cells[1].Value) < Convert.ToInt32(KcalControl.Instance.labelKcalNecc.Text))  //
+                {
+                   
+                    style.ForeColor = Color.Green;
+                    item.Cells[1].Style.ForeColor = Color.Green;
+                }
+                else if(Convert.ToInt32(item.Cells[1].Value) > Convert.ToInt32(KcalControl.Instance.labelKcalNecc.Text))
+                {
+                    
+                    style.ForeColor = Color.Red;
+                    item.Cells[1].Style.ForeColor = Color.Red ;
+
+                }
+               // KcalControl.Instance.dataGridViewKcal.Rows.;
+            }
+            
         }
 
         private DataTable getKcalList()
         {
-            DB db = new DB();
-            DataTable table = new DataTable();
-            using (MySqlCommand command = new MySqlCommand("SELECT `date`, `kcal` FROM `day` WHERE `id_person` = @uID", db.getConnection()))
+            if (KcalControl.Instance.labelKcalNecc.Text != "")
             {
-                command.Parameters.Add("@uID", MySqlDbType.Int32).Value = user.Id;
-                db.openConnection();
+                DB db = new DB();
+                DataTable table = new DataTable();
+                using (MySqlCommand command = new MySqlCommand("SELECT `date`, `kcal` FROM `day` WHERE `id_person` = @uID ORDER BY 1 asc", db.getConnection()))
+                {
+                    command.Parameters.Add("@uID", MySqlDbType.Int32).Value = user.Id;
+                    db.openConnection();
 
-                MySqlDataReader reader = command.ExecuteReader();
-                table.Load(reader);
-                
+                    MySqlDataReader reader = command.ExecuteReader();
 
-                db.closeConnection();
+                    table.Load(reader);
+                   
+                    db.closeConnection();
+                }
+                return table;
             }
-            return table;
+            else
+                MessageBox.Show("Please, choose your sex before loading data.", "Warning");
+                return null ;
+            
         }
 
         private void buttonProtein_Click(object sender, EventArgs e)
         {
             sidePanel.Height = buttonProtein.Height;
             sidePanel.Top = buttonProtein.Top;
+            PFCControlShow();
+        }
+
+        private void PFCControlShow()
+        {
+            if (!panelMain.Controls.Contains(PFCControl.Instance))
+            {
+                panelMain.Controls.Add(PFCControl.Instance);
+                PFCControl.Instance.Dock = DockStyle.Fill;
+                PFCControl.Instance.BringToFront();
+
+                PFCControl.Instance.PCFButtonChanged += Instance_PCFButtonChanged;
+
+               // loadLiveChart(DateTime.Now.Date);
+                PFCControl.Instance.PFCdateChanged += Instance_PFCdateChanged;
+            }
+            else
+                PFCControl.Instance.BringToFront();
+        }
+
+        private void Instance_PFCdateChanged(DateTime date)
+        {
+            PFCControl.Instance.pieChart1.Refresh();
+            // znalezc czy w ogole jest taka data zapisana w db
+            loadLiveChart(date);
+        }
+
+        private void loadLiveChart(DateTime date)
+        {
+            Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+            PFCControl.Instance.pieChart1.LegendLocation = LegendLocation.Left;
+
+            DB db = new DB();
+            using (MySqlCommand command = new MySqlCommand("SELECT `date`, `fat`, `carb`, `protein` FROM `day` WHERE `id_person` = @uID and `date`= @uD", db.getConnection()))
+            {
+                command.Parameters.Add("@uID", MySqlDbType.Int32).Value = user.Id;
+                command.Parameters.Add("uD", MySqlDbType.DateTime).Value = date;
+                db.openConnection();
+                MySqlDataReader reader = command.ExecuteReader();
+               
+                while(reader.Read())
+                {
+                    if(reader.HasRows == false)
+                    {
+                        MessageBox.Show("There is no data in the database matching your date criterium", "Warning", MessageBoxButtons.OKCancel);
+                        break;
+                    }
+                    else
+                    {
+                        PFCControl.Instance.pieChart1.Series = new SeriesCollection
+                {
+                    new PieSeries
+                    {
+                        Title = "Fat",
+                    Values = new ChartValues<float> { reader.GetFloat("fat")},
+                    DataLabels = true,
+                    LabelPoint = labelPoint,
+                    Fill = System.Windows.Media.Brushes.LightBlue
+                    },
+                    new PieSeries
+                    {
+                        Title = "Carbohydrates",
+                    Values = new ChartValues<float> { reader.GetFloat("carb")},
+                    DataLabels = true,
+                    LabelPoint = labelPoint,
+                    Fill = System.Windows.Media.Brushes.LightPink
+                    },
+                    new PieSeries
+                    {
+                        Title = "Protein",
+                        Values = new ChartValues<float> { reader.GetFloat("protein") },
+                        DataLabels = true,
+                        LabelPoint = labelPoint,
+                        Fill = System.Windows.Media.Brushes.LightYellow
+                    }
+
+                };
+                    }
+                    
+                }
+                
+                db.closeConnection();
+            }
+        }
+
+        private void Instance_PCFButtonChanged()
+        {
+          
+           
         }
 
         private void buttonFat_Click(object sender, EventArgs e)
         {
             sidePanel.Height = buttonFat.Height;
             sidePanel.Top = buttonFat.Top;
+            PFCControlShow();
         }
 
         private void buttonCarb_Click(object sender, EventArgs e)
         {
             sidePanel.Height = buttonCarb.Height;
             sidePanel.Top = buttonCarb.Top;
+            PFCControlShow();
         }
 
         private void buttonFiber_Click(object sender, EventArgs e)
         {
             sidePanel.Height = buttonFiber.Height;
             sidePanel.Top = buttonFiber.Top;
+           
         }
 
         private void buttonExercise_Click(object sender, EventArgs e)

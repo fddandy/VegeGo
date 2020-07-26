@@ -143,6 +143,16 @@ namespace Version1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nutrient_composition_146 {
+            get {
+                object obj = ResourceManager.GetObject("nutrient_composition_146", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap salmon {
             get {
                 object obj = ResourceManager.GetObject("salmon", resourceCulture);
