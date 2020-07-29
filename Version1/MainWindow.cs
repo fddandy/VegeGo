@@ -272,14 +272,25 @@ namespace Version1
 
         private void labelMealTracker_MouseClick(object sender, MouseEventArgs e)
         {
+            sidepanel1.Visible = false;
+            sidePanel2.Visible = false;
+            sidePanel3.Visible = true;
+            sidePanel4.Visible = false;
+            sidePanel5.Visible = false;
+
             DayForm dayForm = new DayForm(user, hc);
             dayForm.ShowDialog();
             dayForm.BringToFront();
             panelMain.SendToBack();
             
+            
+        }
+
+        private void labelAddMeal_Click(object sender, EventArgs e)
+        {
             sidepanel1.Visible = false;
-            sidePanel2.Visible = false;
-            sidePanel3.Visible = true;
+            sidePanel2.Visible = true;
+            sidePanel3.Visible = false;
             sidePanel4.Visible = false;
             sidePanel5.Visible = false;
         }

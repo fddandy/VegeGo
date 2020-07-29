@@ -193,6 +193,36 @@ namespace Version1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Webp_net_resizeimage__10_ {
+            get {
+                object obj = ResourceManager.GetObject("Webp.net-resizeimage (10)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Webp_net_resizeimage__11_ {
+            get {
+                object obj = ResourceManager.GetObject("Webp.net-resizeimage (11)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Webp_net_resizeimage__12_ {
+            get {
+                object obj = ResourceManager.GetObject("Webp.net-resizeimage (12)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Webp_net_resizeimage__2_ {
             get {
                 object obj = ResourceManager.GetObject("Webp.net-resizeimage (2)", resourceCulture);
@@ -236,6 +266,46 @@ namespace Version1.Properties {
         internal static System.Drawing.Bitmap Webp_net_resizeimage__6_ {
             get {
                 object obj = ResourceManager.GetObject("Webp.net-resizeimage (6)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Webp_net_resizeimage__7_ {
+            get {
+                object obj = ResourceManager.GetObject("Webp.net-resizeimage (7)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Webp_net_resizeimage__8_ {
+            get {
+                object obj = ResourceManager.GetObject("Webp.net-resizeimage (8)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Webp_net_resizeimage__9_ {
+            get {
+                object obj = ResourceManager.GetObject("Webp.net-resizeimage (9)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Webp1 {
+            get {
+                object obj = ResourceManager.GetObject("Webp1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

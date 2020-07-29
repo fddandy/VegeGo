@@ -362,9 +362,48 @@ namespace Version1
 
         private void Instance_PFCdateChanged(DateTime date)
         {
-            PFCControl.Instance.pieChart1.Refresh();
+            
             // znalezc czy w ogole jest taka data zapisana w db
-            loadLiveChart(date);
+            if(DateExists(date))
+            {
+                PFCControl.Instance.pieChart1.Refresh();
+                loadLiveChart(date);
+            }
+            else
+            {
+                MessageBox.Show("There is no data in the database matching your date criterium", "Warning", MessageBoxButtons.OKCancel);
+            }
+            
+            
+        }
+
+   
+        private bool DateExists(DateTime d)
+        {
+            DB db = new DB();
+            int counter = 0;
+            using (MySqlCommand command = new MySqlCommand("SELECT `date` FROM `day` WHERE `id_person` = @uID AND `date` = @uD", db.getConnection()))
+            {
+                command.Parameters.Add("@uID", MySqlDbType.Int32).Value = user.Id;
+                command.Parameters.Add("@uD", MySqlDbType.DateTime).Value = d;
+                db.openConnection();
+
+                MySqlDataReader reader = command.ExecuteReader();
+                
+                while (reader.Read())
+                {
+                    counter++;
+                }
+                db.closeConnection();
+                if (counter > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                } 
+            }
         }
 
         private void loadLiveChart(DateTime date)
@@ -382,13 +421,7 @@ namespace Version1
                
                 while(reader.Read())
                 {
-                    if(reader.HasRows == false)
-                    {
-                        MessageBox.Show("There is no data in the database matching your date criterium", "Warning", MessageBoxButtons.OKCancel);
-                        break;
-                    }
-                    else
-                    {
+                    
                         PFCControl.Instance.pieChart1.Series = new SeriesCollection
                 {
                     new PieSeries
@@ -413,11 +446,11 @@ namespace Version1
                         Values = new ChartValues<float> { reader.GetFloat("protein") },
                         DataLabels = true,
                         LabelPoint = labelPoint,
-                        Fill = System.Windows.Media.Brushes.LightYellow
+                        Fill = System.Windows.Media.Brushes.Yellow
                     }
 
                 };
-                    }
+                    
                     
                 }
                 

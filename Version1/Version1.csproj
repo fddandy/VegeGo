@@ -65,6 +65,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMealForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMealForm.Designer.cs">
+      <DependentUpon>AddMealForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Day.cs" />
     <Compile Include="DayForm.cs">
       <SubType>Form</SubType>
@@ -139,6 +145,9 @@
     <Compile Include="WaterControl.Designer.cs">
       <DependentUpon>WaterControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddMealForm.resx">
+      <DependentUpon>AddMealForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DayControl.resx">
       <DependentUpon>DayControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +207,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\food.jpg" />
+    <None Include="Resources\Webp.net-resizeimage %287%291.png" />
+    <None Include="Resources\Webp.net-resizeimage %288%29.png" />
+    <None Include="Resources\Webp.net-resizeimage %289%29.png" />
+    <None Include="Resources\Webp.net-resizeimage %2810%29.png" />
+    <None Include="Resources\Webp.net-resizeimage %2811%29.png" />
+    <None Include="Resources\Webp.net-resizeimage %2812%29.png" />
+    <None Include="Resources\Webp.net-resizeimage %287%29.png" />
     <None Include="Resources\Icon-Small-40.png" />
     <None Include="Resources\he.jpg" />
     <Content Include="Resources\iconfinder_common-bookmark-book-open-outline-stroke_763427.png" />

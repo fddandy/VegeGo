@@ -79,6 +79,7 @@
             this.labelWeight = new System.Windows.Forms.Label();
             this.labelBirthDate = new System.Windows.Forms.Label();
             this.labelHealthInf = new System.Windows.Forms.Label();
+            this.labelAddMeal = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -206,6 +207,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.labelAddMeal);
             this.panel4.Controls.Add(this.sidePanel2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 86);
@@ -652,6 +654,21 @@
             this.labelHealthInf.TabIndex = 0;
             this.labelHealthInf.Text = "Your health card";
             // 
+            // labelAddMeal
+            // 
+            this.labelAddMeal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelAddMeal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelAddMeal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelAddMeal.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAddMeal.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.labelAddMeal.Location = new System.Drawing.Point(10, 0);
+            this.labelAddMeal.Name = "labelAddMeal";
+            this.labelAddMeal.Size = new System.Drawing.Size(109, 84);
+            this.labelAddMeal.TabIndex = 20;
+            this.labelAddMeal.Text = "Add a meal";
+            this.labelAddMeal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelAddMeal.Click += new System.EventHandler(this.labelAddMeal_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -738,5 +755,6 @@
         private System.Windows.Forms.Panel sidePanel4;
         private System.Windows.Forms.Panel sidePanel3;
         private System.Windows.Forms.Panel sidepanel1;
+        private System.Windows.Forms.Label labelAddMeal;
     }
 }

@@ -94,9 +94,9 @@
             // 
             // pieChart1
             // 
-            this.pieChart1.Location = new System.Drawing.Point(289, 61);
+            this.pieChart1.Location = new System.Drawing.Point(326, 61);
             this.pieChart1.Name = "pieChart1";
-            this.pieChart1.Size = new System.Drawing.Size(362, 307);
+            this.pieChart1.Size = new System.Drawing.Size(343, 307);
             this.pieChart1.TabIndex = 1;
             this.pieChart1.Text = "pieChart1";
             // 
@@ -109,7 +109,7 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(231, 94);
+            this.dateTimePicker.Location = new System.Drawing.Point(86, 120);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(108, 20);
             this.dateTimePicker.TabIndex = 3;
@@ -118,21 +118,21 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Linen;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(17, 55);
+            this.label1.Location = new System.Drawing.Point(9, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(199, 101);
+            this.label1.Size = new System.Drawing.Size(221, 56);
             this.label1.TabIndex = 4;
             this.label1.Text = "Choose the date to show your fat/protein/carbohydrate percentage %";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Version1.Properties.Resources.nutrient_composition_146;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 159);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 146);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(302, 199);
+            this.pictureBox1.Size = new System.Drawing.Size(293, 212);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
