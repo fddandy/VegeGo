@@ -207,6 +207,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\food.jpg" />
+    <None Include="Resources\Webp.net-resizeimage.jpg" />
+    <None Include="Resources\Webp.net-resizeimage %2813%29.png" />
     <None Include="Resources\Webp.net-resizeimage %287%291.png" />
     <None Include="Resources\Webp.net-resizeimage %288%29.png" />
     <None Include="Resources\Webp.net-resizeimage %289%29.png" />
@@ -216,6 +218,8 @@
     <None Include="Resources\Webp.net-resizeimage %287%29.png" />
     <None Include="Resources\Icon-Small-40.png" />
     <None Include="Resources\he.jpg" />
+    <None Include="Resources\addMeal.jpg" />
+    <None Include="Resources\addMeal1.jpg" />
     <Content Include="Resources\iconfinder_common-bookmark-book-open-outline-stroke_763427.png" />
     <None Include="Resources\woda.jpg" />
     <None Include="Resources\water.jpg" />
@@ -230,6 +234,7 @@
     <None Include="Resources\iconfinder_resolutions-18_897234.png" />
     <None Include="Resources\kcal.jpg" />
     <None Include="Resources\nutrient_composition_146.png" />
+    <None Include="Resources\plant %281%29.png" />
     <Content Include="Resources\VegeGo.jpg" />
     <None Include="Resources\iconfinder_key-password-passcode-access_2205205.png" />
     <None Include="Resources\iconfinder_user_female_172621.png" />

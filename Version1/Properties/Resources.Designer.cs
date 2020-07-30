@@ -63,6 +63,26 @@ namespace Version1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addMeal {
+            get {
+                object obj = ResourceManager.GetObject("addMeal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap addMeal1 {
+            get {
+                object obj = ResourceManager.GetObject("addMeal1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap food {
             get {
                 object obj = ResourceManager.GetObject("food", resourceCulture);
@@ -153,6 +173,16 @@ namespace Version1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap plant__1_ {
+            get {
+                object obj = ResourceManager.GetObject("plant (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap salmon {
             get {
                 object obj = ResourceManager.GetObject("salmon", resourceCulture);
@@ -216,6 +246,16 @@ namespace Version1.Properties {
         internal static System.Drawing.Bitmap Webp_net_resizeimage__12_ {
             get {
                 object obj = ResourceManager.GetObject("Webp.net-resizeimage (12)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Webp_net_resizeimage__13_ {
+            get {
+                object obj = ResourceManager.GetObject("Webp.net-resizeimage (13)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -306,6 +346,16 @@ namespace Version1.Properties {
         internal static System.Drawing.Bitmap Webp1 {
             get {
                 object obj = ResourceManager.GetObject("Webp1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Webp2 {
+            get {
+                object obj = ResourceManager.GetObject("Webp2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

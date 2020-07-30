@@ -15,9 +15,9 @@ namespace Version1
 {
     public partial class DayForm : Form
     {
-        User user;
-        HealthCard hc;
-        List<Day> list;
+        private  User user;
+        private HealthCard hc;
+        private List<Day> list;
         public DayForm(User user, HealthCard hc)
         {
             this.user = user;

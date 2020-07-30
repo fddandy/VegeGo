@@ -293,6 +293,8 @@ namespace Version1
             sidePanel3.Visible = false;
             sidePanel4.Visible = false;
             sidePanel5.Visible = false;
+            AddMealForm addMealForm = new AddMealForm(user);
+            addMealForm.ShowDialog();
         }
     }
 }

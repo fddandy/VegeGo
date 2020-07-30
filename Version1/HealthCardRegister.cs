@@ -77,7 +77,9 @@ namespace Version1
             DB db = new DB();
             if(!alreadyExists()) // inserting new record
             {
-                MySqlCommand command = new MySqlCommand("INSERT INTO `health_card` (`birth_date`, `weight`, `height`, `activ_level`, `id_person`) VALUES (@uBD, @uW, @uH, @uAL, @id)", db.getConnection());
+                MySqlCommand command = new MySqlCommand("INSERT INTO `health_card`" +
+                    " (`birth_date`, `weight`, `height`, `activ_level`, `id_person`)" +
+                    " VALUES (@uBD, @uW, @uH, @uAL, @id)", db.getConnection());
                if(setParameters(command))
                 {
                     db.openConnection();
