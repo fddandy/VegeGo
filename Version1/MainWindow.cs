@@ -43,15 +43,38 @@ namespace Version1
             while(rd.Read())
             {
                 Day day = new Day();
+                //day.Id = MainWindow.SafeGetString(rd, 1);
+                
                 day.Id = rd.GetInt32("id");
                 day.Date = rd.GetDateTime("date").Date;
-                day.Water = rd.GetFloat("water");
-                day.Kcal = rd.GetInt32("kcal");
-                day.Protein = rd.GetFloat("protein");
-                day.Fat = rd.GetFloat("fat");
-                day.Carb = rd.GetFloat("carb");
-                day.Fiber = rd.GetFloat("fiber");
-                day.Exercise = rd.GetString("exercise");
+                if (!rd.IsDBNull(3))
+                    day.Water = rd.GetFloat("water");
+                else
+                    day.Water = 0;
+                if (!rd.IsDBNull(4))
+                    day.Kcal = rd.GetInt32("kcal");
+                else
+                    day.Kcal = 0;
+                if (!rd.IsDBNull(5))
+                    day.Protein = rd.GetFloat("protein");
+                else
+                    day.Protein = 0;
+                if (!rd.IsDBNull(6))
+                    day.Fat = rd.GetFloat("fat");
+                else
+                    day.Fat = 0;
+                if (!rd.IsDBNull(7))
+                    day.Carb = rd.GetFloat("carb");
+                else
+                    day.Carb = 0;
+                if (!rd.IsDBNull(8))
+                    day.Fiber = rd.GetFloat("fiber");
+                else
+                    day.Fiber = 0;
+                if (!rd.IsDBNull(8))
+                    day.Exercise = rd.GetString("exercise");
+                else
+                    day.Exercise = string.Empty;
                 day.Id_Person=rd.GetInt32("id_person");
                 list.Add(day);
             }
@@ -59,8 +82,14 @@ namespace Version1
             db.closeConnection();
             return list;
         }
-
-     
+        /*
+        public static int  SafeGetString(this MySqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return reader.GetInt32(colIndex);
+            return 0;
+        }
+        */
         private void loadHealthCard()
         {
             DB db = new DB();

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Button buttonSubmit;
+            this.buttonSubmit = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelDate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,16 +43,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.maskedTextBoxWeight = new System.Windows.Forms.MaskedTextBox();
             this.flowLayoutPanelWeightQuantity = new System.Windows.Forms.FlowLayoutPanel();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButtonQuantity = new System.Windows.Forms.RadioButton();
-            this.maskedTextBoxQuantity = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBoxKcal = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBoxFat = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBoxCarbs = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBoxFiber = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBoxProtein = new System.Windows.Forms.MaskedTextBox();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.textBoxCustomizeType = new System.Windows.Forms.TextBox();
             this.textBoxFood = new System.Windows.Forms.TextBox();
@@ -66,7 +59,12 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            buttonSubmit = new System.Windows.Forms.Button();
+            this.textBoxWeiQua = new System.Windows.Forms.TextBox();
+            this.textBoxFat = new System.Windows.Forms.TextBox();
+            this.textBoxKcal = new System.Windows.Forms.TextBox();
+            this.textBoxCarbs = new System.Windows.Forms.TextBox();
+            this.textBoxFiber = new System.Windows.Forms.TextBox();
+            this.textBoxProtein = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanelWeightQuantity.SuspendLayout();
@@ -84,24 +82,24 @@
             // 
             // buttonSubmit
             // 
-            buttonSubmit.BackColor = System.Drawing.Color.Maroon;
-            buttonSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
-            buttonSubmit.FlatAppearance.BorderColor = System.Drawing.Color.YellowGreen;
-            buttonSubmit.FlatAppearance.BorderSize = 2;
-            buttonSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            buttonSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            buttonSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonSubmit.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            buttonSubmit.ForeColor = System.Drawing.Color.Linen;
-            buttonSubmit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            buttonSubmit.Location = new System.Drawing.Point(567, 399);
-            buttonSubmit.Name = "buttonSubmit";
-            buttonSubmit.Size = new System.Drawing.Size(81, 30);
-            buttonSubmit.TabIndex = 34;
-            buttonSubmit.Text = "Submit";
-            buttonSubmit.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            buttonSubmit.UseVisualStyleBackColor = false;
-            buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
+            this.buttonSubmit.BackColor = System.Drawing.Color.Maroon;
+            this.buttonSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSubmit.FlatAppearance.BorderColor = System.Drawing.Color.YellowGreen;
+            this.buttonSubmit.FlatAppearance.BorderSize = 2;
+            this.buttonSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.buttonSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSubmit.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSubmit.ForeColor = System.Drawing.Color.Linen;
+            this.buttonSubmit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonSubmit.Location = new System.Drawing.Point(567, 399);
+            this.buttonSubmit.Name = "buttonSubmit";
+            this.buttonSubmit.Size = new System.Drawing.Size(81, 30);
+            this.buttonSubmit.TabIndex = 34;
+            this.buttonSubmit.Text = "Submit";
+            this.buttonSubmit.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonSubmit.UseVisualStyleBackColor = false;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
             // panel1
             // 
@@ -271,18 +269,6 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Fiber :";
             // 
-            // maskedTextBoxWeight
-            // 
-            this.maskedTextBoxWeight.BackColor = System.Drawing.Color.Linen;
-            this.maskedTextBoxWeight.Location = new System.Drawing.Point(319, 370);
-            this.maskedTextBoxWeight.Mask = "0000";
-            this.maskedTextBoxWeight.Name = "maskedTextBoxWeight";
-            this.maskedTextBoxWeight.Size = new System.Drawing.Size(53, 20);
-            this.maskedTextBoxWeight.TabIndex = 23;
-            this.maskedTextBoxWeight.UseWaitCursor = true;
-            this.maskedTextBoxWeight.ValidatingType = typeof(int);
-            this.maskedTextBoxWeight.Visible = false;
-            // 
             // flowLayoutPanelWeightQuantity
             // 
             this.flowLayoutPanelWeightQuantity.Controls.Add(this.radioButton1);
@@ -315,68 +301,6 @@
             this.radioButtonQuantity.Text = "Quantity";
             this.radioButtonQuantity.UseVisualStyleBackColor = true;
             this.radioButtonQuantity.CheckedChanged += new System.EventHandler(this.radioButtonQuantity_CheckedChanged);
-            // 
-            // maskedTextBoxQuantity
-            // 
-            this.maskedTextBoxQuantity.BackColor = System.Drawing.Color.Linen;
-            this.maskedTextBoxQuantity.Location = new System.Drawing.Point(319, 396);
-            this.maskedTextBoxQuantity.Mask = "00";
-            this.maskedTextBoxQuantity.Name = "maskedTextBoxQuantity";
-            this.maskedTextBoxQuantity.Size = new System.Drawing.Size(53, 20);
-            this.maskedTextBoxQuantity.TabIndex = 25;
-            this.maskedTextBoxQuantity.UseWaitCursor = true;
-            this.maskedTextBoxQuantity.ValidatingType = typeof(int);
-            this.maskedTextBoxQuantity.Visible = false;
-            // 
-            // maskedTextBoxKcal
-            // 
-            this.maskedTextBoxKcal.BackColor = System.Drawing.Color.Linen;
-            this.maskedTextBoxKcal.Location = new System.Drawing.Point(717, 88);
-            this.maskedTextBoxKcal.Mask = "0000";
-            this.maskedTextBoxKcal.Name = "maskedTextBoxKcal";
-            this.maskedTextBoxKcal.Size = new System.Drawing.Size(62, 20);
-            this.maskedTextBoxKcal.TabIndex = 26;
-            this.maskedTextBoxKcal.ValidatingType = typeof(int);
-            // 
-            // maskedTextBoxFat
-            // 
-            this.maskedTextBoxFat.BackColor = System.Drawing.Color.Linen;
-            this.maskedTextBoxFat.Location = new System.Drawing.Point(531, 90);
-            this.maskedTextBoxFat.Mask = "000";
-            this.maskedTextBoxFat.Name = "maskedTextBoxFat";
-            this.maskedTextBoxFat.Size = new System.Drawing.Size(54, 20);
-            this.maskedTextBoxFat.TabIndex = 27;
-            this.maskedTextBoxFat.ValidatingType = typeof(int);
-            // 
-            // maskedTextBoxCarbs
-            // 
-            this.maskedTextBoxCarbs.BackColor = System.Drawing.Color.Linen;
-            this.maskedTextBoxCarbs.Location = new System.Drawing.Point(617, 157);
-            this.maskedTextBoxCarbs.Mask = "000";
-            this.maskedTextBoxCarbs.Name = "maskedTextBoxCarbs";
-            this.maskedTextBoxCarbs.Size = new System.Drawing.Size(67, 20);
-            this.maskedTextBoxCarbs.TabIndex = 28;
-            this.maskedTextBoxCarbs.ValidatingType = typeof(int);
-            // 
-            // maskedTextBoxFiber
-            // 
-            this.maskedTextBoxFiber.BackColor = System.Drawing.Color.Linen;
-            this.maskedTextBoxFiber.Location = new System.Drawing.Point(543, 248);
-            this.maskedTextBoxFiber.Mask = "00";
-            this.maskedTextBoxFiber.Name = "maskedTextBoxFiber";
-            this.maskedTextBoxFiber.Size = new System.Drawing.Size(42, 20);
-            this.maskedTextBoxFiber.TabIndex = 29;
-            this.maskedTextBoxFiber.ValidatingType = typeof(int);
-            // 
-            // maskedTextBoxProtein
-            // 
-            this.maskedTextBoxProtein.BackColor = System.Drawing.Color.Linen;
-            this.maskedTextBoxProtein.Location = new System.Drawing.Point(557, 339);
-            this.maskedTextBoxProtein.Mask = "000";
-            this.maskedTextBoxProtein.Name = "maskedTextBoxProtein";
-            this.maskedTextBoxProtein.Size = new System.Drawing.Size(42, 20);
-            this.maskedTextBoxProtein.TabIndex = 30;
-            this.maskedTextBoxProtein.ValidatingType = typeof(int);
             // 
             // comboBoxType
             // 
@@ -513,6 +437,55 @@
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
             // 
+            // textBoxWeiQua
+            // 
+            this.textBoxWeiQua.BackColor = System.Drawing.Color.Linen;
+            this.textBoxWeiQua.Location = new System.Drawing.Point(319, 387);
+            this.textBoxWeiQua.Name = "textBoxWeiQua";
+            this.textBoxWeiQua.Size = new System.Drawing.Size(64, 20);
+            this.textBoxWeiQua.TabIndex = 37;
+            this.textBoxWeiQua.Visible = false;
+            // 
+            // textBoxFat
+            // 
+            this.textBoxFat.BackColor = System.Drawing.Color.Linen;
+            this.textBoxFat.Location = new System.Drawing.Point(521, 88);
+            this.textBoxFat.Name = "textBoxFat";
+            this.textBoxFat.Size = new System.Drawing.Size(64, 20);
+            this.textBoxFat.TabIndex = 38;
+            // 
+            // textBoxKcal
+            // 
+            this.textBoxKcal.BackColor = System.Drawing.Color.Linen;
+            this.textBoxKcal.Location = new System.Drawing.Point(708, 88);
+            this.textBoxKcal.Name = "textBoxKcal";
+            this.textBoxKcal.Size = new System.Drawing.Size(64, 20);
+            this.textBoxKcal.TabIndex = 39;
+            // 
+            // textBoxCarbs
+            // 
+            this.textBoxCarbs.BackColor = System.Drawing.Color.Linen;
+            this.textBoxCarbs.Location = new System.Drawing.Point(605, 157);
+            this.textBoxCarbs.Name = "textBoxCarbs";
+            this.textBoxCarbs.Size = new System.Drawing.Size(64, 20);
+            this.textBoxCarbs.TabIndex = 40;
+            // 
+            // textBoxFiber
+            // 
+            this.textBoxFiber.BackColor = System.Drawing.Color.Linen;
+            this.textBoxFiber.Location = new System.Drawing.Point(535, 248);
+            this.textBoxFiber.Name = "textBoxFiber";
+            this.textBoxFiber.Size = new System.Drawing.Size(64, 20);
+            this.textBoxFiber.TabIndex = 41;
+            // 
+            // textBoxProtein
+            // 
+            this.textBoxProtein.BackColor = System.Drawing.Color.Linen;
+            this.textBoxProtein.Location = new System.Drawing.Point(546, 339);
+            this.textBoxProtein.Name = "textBoxProtein";
+            this.textBoxProtein.Size = new System.Drawing.Size(53, 20);
+            this.textBoxProtein.TabIndex = 42;
+            // 
             // AddMealForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -520,20 +493,19 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxProtein);
+            this.Controls.Add(this.textBoxFiber);
+            this.Controls.Add(this.textBoxCarbs);
+            this.Controls.Add(this.textBoxKcal);
+            this.Controls.Add(this.textBoxFat);
+            this.Controls.Add(this.textBoxWeiQua);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox10);
-            this.Controls.Add(buttonSubmit);
+            this.Controls.Add(this.buttonSubmit);
             this.Controls.Add(this.textBoxFood);
             this.Controls.Add(this.textBoxCustomizeType);
             this.Controls.Add(this.comboBoxType);
-            this.Controls.Add(this.maskedTextBoxProtein);
-            this.Controls.Add(this.maskedTextBoxFiber);
-            this.Controls.Add(this.maskedTextBoxCarbs);
-            this.Controls.Add(this.maskedTextBoxFat);
-            this.Controls.Add(this.maskedTextBoxKcal);
-            this.Controls.Add(this.maskedTextBoxQuantity);
             this.Controls.Add(this.flowLayoutPanelWeightQuantity);
-            this.Controls.Add(this.maskedTextBoxWeight);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox7);
@@ -600,21 +572,21 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxWeight;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWeightQuantity;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButtonQuantity;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxQuantity;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxKcal;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxFat;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxCarbs;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxFiber;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxProtein;
         private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.TextBox textBoxCustomizeType;
         private System.Windows.Forms.TextBox textBoxFood;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.DateTimePicker datePicker;
+        private System.Windows.Forms.TextBox textBoxWeiQua;
+        private System.Windows.Forms.TextBox textBoxFat;
+        private System.Windows.Forms.TextBox textBoxKcal;
+        private System.Windows.Forms.TextBox textBoxCarbs;
+        private System.Windows.Forms.TextBox textBoxFiber;
+        private System.Windows.Forms.TextBox textBoxProtein;
+        public System.Windows.Forms.Button buttonSubmit;
     }
 }
