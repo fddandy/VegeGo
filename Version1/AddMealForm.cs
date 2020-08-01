@@ -45,7 +45,7 @@ namespace Version1
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
             if(dataValid())
-            {
+            {  
                 DB db = new DB();
                 int dayID = 0;
                 int counter = 0;
@@ -61,28 +61,36 @@ namespace Version1
                 if (counter > 0)
                 {
                     dayID = reader.GetInt32("id");
-                    db.closeConnection();
+                   db.closeConnection();
                     insertMeal(db, dayID);
                     db.closeConnection();
                 }
                 else
                 { // if date doesnt exist in a DAY table
                     db.closeConnection();
-                    MySqlCommand c = new MySqlCommand("INSERT INTO `day`(`date`, `id_person`) " +
-                       "VALUES (@uD, @uID_person)", db.getConnection());
+                    MySqlCommand c = new MySqlCommand("INSERT INTO `day`(`date`, `water`, `kcal`, `protein`, `fat`," +
+                        " `carb`, `fiber`, `exercise`, `id_person`) " + "VALUES (@uD, @uW, @uK, @uP, @uFt, @uC, @uFb, @uE, @uID_person)", db.getConnection());
                     try
                     {
                         db.openConnection();
                         c.Parameters.Add("@uD", MySqlDbType.DateTime).Value = datePicker.Value.Date;
                         c.Parameters.Add("@uID_person", MySqlDbType.Int32).Value = user.Id;
-                        // assign the rest to 0 instead of null
+                        c.Parameters.Add("@uW", MySqlDbType.Double).Value = 0;
+                        c.Parameters.Add("@uE", MySqlDbType.VarChar).Value = string.Empty;
+                        // assign the rest to inserted data instead of NULL
+
+                        validParam(c, textBoxKcal, "@uK", MySqlDbType.Int32);
+                        validParam(c, textBoxProtein, "@uP", MySqlDbType.Double);
+                        validParam(c, textBoxFat, "@uFt", MySqlDbType.Double);
+                        validParam(c, textBoxCarbs, "@uC", MySqlDbType.Double);
+                        validParam(c, textBoxFiber, "@uFb", MySqlDbType.Double);
+                       
                         c.ExecuteNonQuery();
                     }
                     catch (Exception ex)
                     {
                         throw ex;
                     }
-                    
                         using (MySqlCommand command = new MySqlCommand("INSERT INTO `meal`(`type`, `foodConsumed`, `weight`, " +
                                 "`kcal`, `protein`, `fat`, `carb`, `fiber`, `amount`, `id_day`) VALUES (@uT, @uFC, @uW, @uK," +
                                 " @uP, @uFt, @uC, @uFb, @uAm, LAST_INSERT_ID())", db.getConnection()))
@@ -91,26 +99,35 @@ namespace Version1
                                 return;
 
                             if (command.ExecuteNonQuery() == 1)
-                            {
-                                MessageBox.Show("Your meal was uploaded", "Success");
-                            }
-                            else
+                        {
+                            MessageBox.Show("Your meal was uploaded", "Success");
+                            clearmealForm();
+                        }
+                        else
                             {
                                 MessageBox.Show("Ooops...could not load your meal", "Try again");
                             }
                             db.closeConnection();
                         }
-                    
-                   
                 }
 
             }
             else
             {
-                MessageBox.Show("Please, insert appropriate data and be sure to use comma " +
-                    "while typing decimal values", "Inconvenient format");
                 return;
             }
+        }
+
+        private void clearmealForm()
+        {
+            comboBoxType.SelectedIndex = 0;
+            textBoxCarbs.Text = string.Empty;
+            textBoxFat.Text = string.Empty;
+            textBoxFiber.Text = string.Empty;
+            textBoxFood.Text = string.Empty;
+            textBoxKcal.Text = string.Empty;
+            textBoxProtein.Text = string.Empty;
+            textBoxWeiQua.Text = string.Empty;
         }
 
         private bool setParametres(MySqlCommand command)
@@ -126,28 +143,6 @@ namespace Version1
                 validParam(command, textBoxCarbs, "@uC", MySqlDbType.Double);
                 validParam(command, textBoxFiber, "@uFb", MySqlDbType.Double);
 
-                /*
-                if(textBoxKcal.Text != "")
-                command.Parameters.Add("@uK", MySqlDbType.Int32).Value = Convert.ToInt32(textBoxKcal.Text);
-                else
-                    command.Parameters.Add("@uK", MySqlDbType.Int32).Value = 0;
-                if (textBoxProtein.Text != "")
-                    command.Parameters.Add("@uP", MySqlDbType.Double).Value = Convert.ToDouble(textBoxProtein.Text);
-                else
-                    command.Parameters.Add("@uP", MySqlDbType.Double).Value = 0;
-                if (textBoxFat.Text != "")
-                    command.Parameters.Add("@uFt", MySqlDbType.Double).Value = Convert.ToDouble(textBoxFat.Text);
-                else
-                    command.Parameters.Add("@uFt", MySqlDbType.Double).Value = 0;
-                if (textBoxCarbs.Text != "")
-                    command.Parameters.Add("@uC", MySqlDbType.Double).Value = Convert.ToDouble(textBoxCarbs.Text);
-                else
-                    command.Parameters.Add("@uC", MySqlDbType.Double).Value = 0;
-                if (textBoxFiber.Text != "")
-                    command.Parameters.Add("@uFb", MySqlDbType.Double).Value = Convert.ToDouble(textBoxFiber.Text);
-                else
-                    command.Parameters.Add("@uFb", MySqlDbType.Double).Value = 0;
-                */
                 if (metrics == 1) // quantity
                 {
                     if(textBoxWeiQua.Text == string.Empty)
@@ -165,11 +160,7 @@ namespace Version1
                             return true;
                         }
                         else
-                        {
                             return false;
-                        }
-
-                        
                     }
                 }
                 else //weight
@@ -189,11 +180,7 @@ namespace Version1
                             return true;
                         }
                         else
-                        {
                             return false;
-                        }
-
-                        
                     }
 
                 }
@@ -206,19 +193,35 @@ namespace Version1
             
                 
         }
-
+        private bool isParInRange(string text, double max, string textBox)
+        {
+            if (!double.TryParse(text, out _))
+            {
+                MessageBox.Show("Please enter a decimal number.", textBox + " is invalid");
+                return false;
+            }
+            else if (double.TryParse(text, out _) &&
+                (Convert.ToDouble(text) > max || Convert.ToDouble(text) < 0))
+            {
+                MessageBox.Show(textBox + " might be max " + max, textBox + " is invalid");
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         private bool QuantityValid()
         {
             if (!int.TryParse(textBoxWeiQua.Text, out _))
             {
-                //buttonSubmit.Enabled = false;
                 MessageBox.Show("Please enter a number.", "Quantity is invalid");
                 return false;
             }
             else if (int.TryParse(textBoxWeiQua.Text, out _) &&
                 (Convert.ToInt32(textBoxWeiQua.Text) > 100 || Convert.ToInt32(textBoxWeiQua.Text) < 0))
             {
-              //  buttonSubmit.Enabled = false;
                 MessageBox.Show("Quantity might be max 100", "Quantity is invalid");
                 return false;
             }
@@ -233,7 +236,6 @@ namespace Version1
         {
             if (!double.TryParse(textBoxWeiQua.Text, out _))
             {
-               // buttonSubmit.Enabled = false;
                 MessageBox.Show("Please enter a decimal number.", "Weight is invalid");
                 return false;
 
@@ -241,7 +243,6 @@ namespace Version1
             else if (double.TryParse(textBoxWeiQua.Text, out _) &&
                 (Convert.ToDouble(textBoxWeiQua.Text) > 2.0 || Convert.ToDouble(textBoxWeiQua.Text) < 0))
             {
-              //  buttonSubmit.Enabled = false;
                 MessageBox.Show("Weight might be max 2 kg", "Weight is invalid");
                 return false;
             }
@@ -283,6 +284,7 @@ namespace Version1
                 if (command.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("Your meal was uploaded", "Success");
+                    clearmealForm();
                 }
                 else
                 {
@@ -308,7 +310,18 @@ namespace Version1
         {
             if(textBoxFood.Text.Length != 0)
             {
-                 
+
+                if (isParInRange(AdaptTextBox(textBoxFat), 100, "Fat") &&
+                    isParInRange(AdaptTextBox(textBoxKcal), 1500, "Kcal") &&
+                    isParInRange(AdaptTextBox(textBoxCarbs), 350, "Carbohydrates") &&
+                    isParInRange(AdaptTextBox(textBoxFiber), 60, "Fiber") &&
+                    isParInRange(AdaptTextBox(textBoxProtein), 100, "Protein"))
+                    return true;
+                else
+                    return false;
+
+
+                /*
                     if (!int.TryParse(AdaptTextBox(textBoxKcal), out _))
                     {
                         return false;
@@ -335,7 +348,7 @@ namespace Version1
                     }
                     else
                         return true;
-                
+                */
             }
             else
             {
@@ -346,12 +359,14 @@ namespace Version1
         {
             textBoxWeiQua.Visible = true;
             metrics = 1;
+            textBoxWeiQua.Text = "";
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             textBoxWeiQua.Visible = true;
             metrics = 0;
+            textBoxWeiQua.Text = "";
         }
     }
 }
