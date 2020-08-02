@@ -80,6 +80,12 @@
     </Compile>
     <Compile Include="DB.cs" />
     <Compile Include="Encryption.cs" />
+    <Compile Include="ExerciseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExerciseControl.Designer.cs">
+      <DependentUpon>ExerciseControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="HealthCard.cs" />
     <Compile Include="DayControl.cs">
       <SubType>UserControl</SubType>
@@ -154,6 +160,9 @@
     <EmbeddedResource Include="DayForm.resx">
       <DependentUpon>DayForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExerciseControl.resx">
+      <DependentUpon>ExerciseControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HealthCardControl.resx">
       <DependentUpon>HealthCardControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\food.jpg" />
+    <None Include="Resources\Webp.net-resizeimage %281%29.jpg" />
     <None Include="Resources\Webp.net-resizeimage.jpg" />
     <None Include="Resources\Webp.net-resizeimage %2813%29.png" />
     <None Include="Resources\Webp.net-resizeimage %287%291.png" />
@@ -235,6 +245,8 @@
     <None Include="Resources\kcal.jpg" />
     <None Include="Resources\nutrient_composition_146.png" />
     <None Include="Resources\plant %281%29.png" />
+    <None Include="Resources\iconfinder_exercise_310335.png" />
+    <None Include="Resources\iconfinder_time-duration-clock-notification_2075826.png" />
     <Content Include="Resources\VegeGo.jpg" />
     <None Include="Resources\iconfinder_key-password-passcode-access_2205205.png" />
     <None Include="Resources\iconfinder_user_female_172621.png" />

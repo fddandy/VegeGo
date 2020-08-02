@@ -123,6 +123,16 @@ namespace Version1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_exercise_310335 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_exercise_310335", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_key_password_passcode_access_2205205 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_key-password-passcode-access_2205205", resourceCulture);
@@ -136,6 +146,16 @@ namespace Version1.Properties {
         internal static System.Drawing.Bitmap iconfinder_resolutions_18_897234 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_resolutions-18_897234", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_time_duration_clock_notification_2075826 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_time-duration-clock-notification_2075826", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -356,6 +376,16 @@ namespace Version1.Properties {
         internal static System.Drawing.Bitmap Webp2 {
             get {
                 object obj = ResourceManager.GetObject("Webp2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Webp3 {
+            get {
+                object obj = ResourceManager.GetObject("Webp3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

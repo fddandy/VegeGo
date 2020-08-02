@@ -67,48 +67,56 @@ namespace Version1
                 }
                 else
                 { // if date doesnt exist in a DAY table
-                    db.closeConnection();
-                    MySqlCommand c = new MySqlCommand("INSERT INTO `day`(`date`, `water`, `kcal`, `protein`, `fat`," +
-                        " `carb`, `fiber`, `exercise`, `id_person`) " + "VALUES (@uD, @uW, @uK, @uP, @uFt, @uC, @uFb, @uE, @uID_person)", db.getConnection());
-                    try
+                    if(datePicker.Value.Date > DateTime.Now.Date)
                     {
-                        db.openConnection();
-                        c.Parameters.Add("@uD", MySqlDbType.DateTime).Value = datePicker.Value.Date;
-                        c.Parameters.Add("@uID_person", MySqlDbType.Int32).Value = user.Id;
-                        c.Parameters.Add("@uW", MySqlDbType.Double).Value = 0;
-                        c.Parameters.Add("@uE", MySqlDbType.VarChar).Value = string.Empty;
-                        // assign the rest to inserted data instead of NULL
+                        MessageBox.Show("Please, choose a date not later than your current date", "Date is invalid");
+                        return;
+                    }
+                    else
+                    {
+                        db.closeConnection();
+                        MySqlCommand c = new MySqlCommand("INSERT INTO `day`(`date`, `water`, `kcal`, `protein`, `fat`," +
+                            " `carb`, `fiber`, `exercise`, `id_person`) " + "VALUES (@uD, @uW, @uK, @uP, @uFt, @uC, @uFb, @uE, @uID_person)", db.getConnection());
+                        try
+                        {
+                            db.openConnection();
+                            c.Parameters.Add("@uD", MySqlDbType.DateTime).Value = datePicker.Value.Date;
+                            c.Parameters.Add("@uID_person", MySqlDbType.Int32).Value = user.Id;
+                            c.Parameters.Add("@uW", MySqlDbType.Double).Value = 0;
+                            c.Parameters.Add("@uE", MySqlDbType.VarChar).Value = string.Empty;
+                            // assign the rest to inserted data instead of NULL
 
-                        validParam(c, textBoxKcal, "@uK", MySqlDbType.Int32);
-                        validParam(c, textBoxProtein, "@uP", MySqlDbType.Double);
-                        validParam(c, textBoxFat, "@uFt", MySqlDbType.Double);
-                        validParam(c, textBoxCarbs, "@uC", MySqlDbType.Double);
-                        validParam(c, textBoxFiber, "@uFb", MySqlDbType.Double);
-                       
-                        c.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
+                            validParam(c, textBoxKcal, "@uK", MySqlDbType.Int32);
+                            validParam(c, textBoxProtein, "@uP", MySqlDbType.Double);
+                            validParam(c, textBoxFat, "@uFt", MySqlDbType.Double);
+                            validParam(c, textBoxCarbs, "@uC", MySqlDbType.Double);
+                            validParam(c, textBoxFiber, "@uFb", MySqlDbType.Double);
+
+                            c.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
                         using (MySqlCommand command = new MySqlCommand("INSERT INTO `meal`(`type`, `foodConsumed`, `weight`, " +
                                 "`kcal`, `protein`, `fat`, `carb`, `fiber`, `amount`, `id_day`) VALUES (@uT, @uFC, @uW, @uK," +
                                 " @uP, @uFt, @uC, @uFb, @uAm, LAST_INSERT_ID())", db.getConnection()))
                         {
-                            if(!setParametres(command))
+                            if (!setParametres(command))
                                 return;
 
                             if (command.ExecuteNonQuery() == 1)
-                        {
-                            MessageBox.Show("Your meal was uploaded", "Success");
-                            clearmealForm();
-                        }
-                        else
+                            {
+                                MessageBox.Show("Your meal was uploaded", "Success");
+                                clearmealForm();
+                            }
+                            else
                             {
                                 MessageBox.Show("Ooops...could not load your meal", "Try again");
                             }
                             db.closeConnection();
                         }
+                    }
                 }
 
             }
@@ -320,35 +328,6 @@ namespace Version1
                 else
                     return false;
 
-
-                /*
-                    if (!int.TryParse(AdaptTextBox(textBoxKcal), out _))
-                    {
-                        return false;
-                    }
-                    else if (!double.TryParse(AdaptTextBox(textBoxFat), out _))
-                    {
-                        return false;
-                    }
-                    else if (!double.TryParse(AdaptTextBox(textBoxCarbs), out _))
-                    {
-                        return false;
-                    }
-                    else if (!double.TryParse(AdaptTextBox(textBoxFiber), out _))
-                    {
-                        return false;
-                    }
-                    else if (!double.TryParse(AdaptTextBox(textBoxProtein), out _))
-                    {
-                        return false;
-                    }
-                    else if (!double.TryParse(AdaptTextBox(textBoxWeiQua), out _))
-                    {
-                        return false ;
-                    }
-                    else
-                        return true;
-                */
             }
             else
             {

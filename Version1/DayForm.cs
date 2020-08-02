@@ -409,7 +409,7 @@ namespace Version1
         private void loadLiveChart(DateTime date)
         {
             Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-            PFCControl.Instance.pieChart1.LegendLocation = LegendLocation.Left;
+            PFCControl.Instance.pieChart1.LegendLocation = LegendLocation.Top;
 
             DB db = new DB();
             using (MySqlCommand command = new MySqlCommand("SELECT `date`, `fat`, `carb`, `protein` FROM `day` WHERE `id_person` = @uID and `date`= @uD", db.getConnection()))
@@ -489,7 +489,77 @@ namespace Version1
         {
             sidePanel.Height = buttonExercise.Height;
             sidePanel.Top = buttonExercise.Top;
+            if (!panelMain.Controls.Contains(ExerciseControl.Instance))
+            {
+                panelMain.Controls.Add(ExerciseControl.Instance);
+                ExerciseControl.Instance.Dock = DockStyle.Fill;
+                ExerciseControl.Instance.BringToFront();
+
+                ExerciseControl.Instance.submitButton_Click += Instance_submitButton_Click;
+            }
+            else
+                ExerciseControl.Instance.BringToFront();
+
         }
+
+        private void Instance_submitButton_Click()
+        {
+            try
+            {
+                if (int.TryParse(ExerciseControl.Instance.textBoxDuration.Text, out _)
+                && (Convert.ToInt32(ExerciseControl.Instance.textBoxDuration.Text) > 0
+                && Convert.ToInt32(ExerciseControl.Instance.textBoxDuration.Text) < 600))
+                {
+                    
+                    foreach (Day day in list)
+                    {
+                        if (day.Date == DateTime.Now.Date && day.Id_Person == user.Id)
+                        {
+                            insertExercise(day);
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+                else
+                {
+                    throw new System.FormatException();
+                }
+            }
+            catch (System.FormatException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void insertExercise(Day day)
+        {
+            string exercToSave = String.Concat( ExerciseControl.Instance.comboBoxLevel.SelectedItem
+                    + " training, " + ExerciseControl.Instance.textBoxDuration.Text + " minutes");
+            DB db = new DB();
+            using (MySqlCommand command = new MySqlCommand("UPDATE `day` SET `exercise` = @uE WHERE `id` = @uID", db.getConnection()))
+            {
+                command.Parameters.Add("@uE", MySqlDbType.VarChar).Value = exercToSave;
+                command.Parameters.Add("@uID", MySqlDbType.Int32).Value = day.Id;
+                db.openConnection();
+                if(command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Exercise was updated successfully", "Success");
+                }
+                else
+                {
+                    MessageBox.Show("Could not update your exercise", "Warning");
+                }
+                db.closeConnection();
+            }
+        }
+
         Point lastPoint;
         private void DayForm_MouseDown(object sender, MouseEventArgs e)
         {

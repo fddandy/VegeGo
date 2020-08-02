@@ -32,6 +32,9 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.sidePanel = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.closeButton = new System.Windows.Forms.Label();
+            this.labelDate = new System.Windows.Forms.Label();
             this.buttonExercise = new System.Windows.Forms.Button();
             this.buttonFiber = new System.Windows.Forms.Button();
             this.buttonCarb = new System.Windows.Forms.Button();
@@ -39,11 +42,6 @@
             this.buttonProtein = new System.Windows.Forms.Button();
             this.buttonKcak = new System.Windows.Forms.Button();
             this.buttonWater = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.closeButton = new System.Windows.Forms.Label();
-            this.labelBackDay = new System.Windows.Forms.Label();
-            this.labelNextDay = new System.Windows.Forms.Label();
-            this.labelDate = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +78,43 @@
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(10, 42);
             this.sidePanel.TabIndex = 14;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Maroon;
+            this.panel3.Controls.Add(this.closeButton);
+            this.panel3.Controls.Add(this.labelDate);
+            this.panel3.Location = new System.Drawing.Point(121, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(678, 75);
+            this.panel3.TabIndex = 2;
+            // 
+            // closeButton
+            // 
+            this.closeButton.AutoSize = true;
+            this.closeButton.BackColor = System.Drawing.Color.SandyBrown;
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.closeButton.Location = new System.Drawing.Point(645, 0);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(33, 31);
+            this.closeButton.TabIndex = 7;
+            this.closeButton.Text = "X";
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
+            // labelDate
+            // 
+            this.labelDate.BackColor = System.Drawing.Color.PeachPuff;
+            this.labelDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelDate.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDate.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelDate.Location = new System.Drawing.Point(459, 28);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(124, 23);
+            this.labelDate.TabIndex = 4;
+            this.labelDate.Text = "label";
             // 
             // buttonExercise
             // 
@@ -214,73 +249,6 @@
             this.buttonWater.UseVisualStyleBackColor = false;
             this.buttonWater.Click += new System.EventHandler(this.buttonWater_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Maroon;
-            this.panel3.Controls.Add(this.closeButton);
-            this.panel3.Controls.Add(this.labelBackDay);
-            this.panel3.Controls.Add(this.labelNextDay);
-            this.panel3.Controls.Add(this.labelDate);
-            this.panel3.Location = new System.Drawing.Point(121, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(678, 75);
-            this.panel3.TabIndex = 2;
-            // 
-            // closeButton
-            // 
-            this.closeButton.AutoSize = true;
-            this.closeButton.BackColor = System.Drawing.Color.SandyBrown;
-            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.closeButton.Location = new System.Drawing.Point(645, 0);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(33, 31);
-            this.closeButton.TabIndex = 7;
-            this.closeButton.Text = "X";
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
-            // labelBackDay
-            // 
-            this.labelBackDay.BackColor = System.Drawing.Color.Transparent;
-            this.labelBackDay.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelBackDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelBackDay.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBackDay.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelBackDay.Location = new System.Drawing.Point(405, 28);
-            this.labelBackDay.Name = "labelBackDay";
-            this.labelBackDay.Size = new System.Drawing.Size(48, 23);
-            this.labelBackDay.TabIndex = 6;
-            this.labelBackDay.Text = "back";
-            this.labelBackDay.Click += new System.EventHandler(this.labelBackDay_Click);
-            // 
-            // labelNextDay
-            // 
-            this.labelNextDay.BackColor = System.Drawing.Color.Transparent;
-            this.labelNextDay.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelNextDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelNextDay.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNextDay.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelNextDay.Location = new System.Drawing.Point(589, 28);
-            this.labelNextDay.Name = "labelNextDay";
-            this.labelNextDay.Size = new System.Drawing.Size(48, 23);
-            this.labelNextDay.TabIndex = 5;
-            this.labelNextDay.Text = "next";
-            this.labelNextDay.Click += new System.EventHandler(this.labelNextDay_Click);
-            // 
-            // labelDate
-            // 
-            this.labelDate.BackColor = System.Drawing.Color.PeachPuff;
-            this.labelDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelDate.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDate.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelDate.Location = new System.Drawing.Point(459, 28);
-            this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(124, 23);
-            this.labelDate.TabIndex = 4;
-            this.labelDate.Text = "label";
-            // 
             // DayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,8 +276,6 @@
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label labelBackDay;
-        private System.Windows.Forms.Label labelNextDay;
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.Button buttonExercise;
         private System.Windows.Forms.Button buttonFiber;
