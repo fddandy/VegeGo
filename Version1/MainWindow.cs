@@ -47,27 +47,27 @@ namespace Version1
                 
                 day.Id = rd.GetInt32("id");
                 day.Date = rd.GetDateTime("date").Date;
-                if (!rd.IsDBNull(3))
+                if (!rd.IsDBNull(2))
                     day.Water = rd.GetFloat("water");
                 else
                     day.Water = 0;
-                if (!rd.IsDBNull(4))
+                if (!rd.IsDBNull(3))
                     day.Kcal = rd.GetInt32("kcal");
                 else
                     day.Kcal = 0;
-                if (!rd.IsDBNull(5))
+                if (!rd.IsDBNull(4))
                     day.Protein = rd.GetFloat("protein");
                 else
                     day.Protein = 0;
-                if (!rd.IsDBNull(6))
+                if (!rd.IsDBNull(5))
                     day.Fat = rd.GetFloat("fat");
                 else
                     day.Fat = 0;
-                if (!rd.IsDBNull(7))
+                if (!rd.IsDBNull(6))
                     day.Carb = rd.GetFloat("carb");
                 else
                     day.Carb = 0;
-                if (!rd.IsDBNull(8))
+                if (!rd.IsDBNull(7))
                     day.Fiber = rd.GetFloat("fiber");
                 else
                     day.Fiber = 0;

@@ -22,11 +22,45 @@ namespace Version1
         {
             this.user = user;
             this.hc = hc;
+            CreateDay();
             list = createDaysList();
             InitializeComponent();
             labelDate.Text = DateTime.Now.Date.ToString();
 
         }
+
+        private  void CreateDay()
+        {
+            List<Day> temp = createDaysList();
+            int counter = 0;
+            foreach(Day day in temp)
+            {
+                if(day.Date == DateTime.Now)
+                {
+                    counter++;
+                }
+            }
+            if(counter == 0)
+            {
+                DB db = new DB();
+                MySqlCommand com = new MySqlCommand("INSERT INTO `day`(`date`, `id_person`, `water`, `kcal`," +
+                    " `protein`, `fat`, `fiber`,`carb`, `exercise`) VALUES" +
+                    " (@uD, @uID, @uW, @uK, @uP, @uFt, @uFb, @uC, @uE)", db.getConnection());
+                com.Parameters.Add("@uD", MySqlDbType.DateTime).Value = DateTime.Now.Date;
+                com.Parameters.Add("@uID", MySqlDbType.Int32).Value = user.Id;
+                com.Parameters.Add("@uP", MySqlDbType.Double).Value = 0;
+                com.Parameters.Add("@uFt", MySqlDbType.Double).Value = 0;
+                com.Parameters.Add("@uFb", MySqlDbType.Double).Value = 0;
+                com.Parameters.Add("@uC", MySqlDbType.Double).Value = 0;
+                com.Parameters.Add("@uK", MySqlDbType.Int32).Value = 0;
+                com.Parameters.Add("@uW", MySqlDbType.Double).Value = 0;
+                com.Parameters.Add("@uE", MySqlDbType.VarChar).Value = string.Empty;
+                db.openConnection();
+                com.ExecuteNonQuery();
+                db.closeConnection(); 
+            }
+        }
+            
 
         private List<Day> createDaysList()
         {
@@ -41,6 +75,38 @@ namespace Version1
                 Day day = new Day();
                 day.Id = rd.GetInt32("id");
                 day.Date = rd.GetDateTime("date").Date;
+                if (!rd.IsDBNull(2))
+                    day.Water = rd.GetFloat("water");
+                else
+                    day.Water = 0;
+                if (!rd.IsDBNull(3))
+                    day.Kcal = rd.GetInt32("kcal");
+                else
+                    day.Kcal = 0;
+                if (!rd.IsDBNull(4))
+                    day.Protein = rd.GetFloat("protein");
+                else
+                    day.Protein = 0;
+                if (!rd.IsDBNull(5))
+                    day.Fat = rd.GetFloat("fat");
+                else
+                    day.Fat = 0;
+                if (!rd.IsDBNull(6))
+                    day.Carb = rd.GetFloat("carb");
+                else
+                    day.Carb = 0;
+                if (!rd.IsDBNull(7))
+                    day.Fiber = rd.GetFloat("fiber");
+                else
+                    day.Fiber = 0;
+                if (!rd.IsDBNull(8))
+                    day.Exercise = rd.GetString("exercise");
+                else
+                    day.Exercise = string.Empty;
+                day.Id_Person = rd.GetInt32("id_person");
+                /*
+                day.Id = rd.GetInt32("id");
+                day.Date = rd.GetDateTime("date").Date;
                 day.Water = rd.GetFloat("water");
                 day.Kcal = rd.GetInt32("kcal");
                 day.Protein = rd.GetFloat("protein");
@@ -49,6 +115,7 @@ namespace Version1
                 day.Fiber = rd.GetFloat("fiber");
                 day.Exercise = rd.GetString("exercise");
                 day.Id_Person = rd.GetInt32("id_person");
+                */
                 list.Add(day);
             }
 
@@ -90,8 +157,15 @@ namespace Version1
 
             void initializeLabelWaterNecc()
             {
+                
                 double waterNecc = hc.Weight * 0.03;
-                WaterControl.Instance.labelWaterNecc.Text = waterNecc.ToString() + " litres a day" ;
+                if (waterNecc == 0.0)
+                {
+                    WaterControl.Instance.labelWaterNecc.Font = new Font(FontFamily.GenericSansSerif, 8);
+                    WaterControl.Instance.labelWaterNecc.Text = "Average person should drink" + Environment.NewLine + "2,5 - 3,7 litres a day";
+                }
+                else
+                    WaterControl.Instance.labelWaterNecc.Text = waterNecc.ToString() + " litres a day" ;
             }
         }
 
@@ -134,8 +208,14 @@ namespace Version1
                         if (day.Water < necc)
                         {
                             double rest = necc - day.Water;
+                            
                             WaterControl.Instance.labelWaterResult.ForeColor = Color.DarkRed;
                             WaterControl.Instance.labelWaterResult.Text = "You need to drink  " + rest.ToString() + " litres more";
+                        }
+                        else if(day.Water == 0)
+                        {
+                            WaterControl.Instance.labelWaterResult.ForeColor = Color.DarkOrchid;
+                            WaterControl.Instance.labelWaterResult.Text = "No data about chosen day";
                         }
                         else
                         {
@@ -168,6 +248,11 @@ namespace Version1
                     WaterControl.Instance.labelWaterResult.ForeColor = Color.DarkGreen;
                     WaterControl.Instance.labelWaterResult.Text = "Throughout last week your water balance was FINE. Your average is " + avg+ " a day";
                 }
+                    else if(sum == 0.0)
+                {
+                    WaterControl.Instance.labelWaterResult.ForeColor = Color.Yellow;
+                    WaterControl.Instance.labelWaterResult.Text = "No data inserted";
+                }
                     else
                 {
                     WaterControl.Instance.labelWaterResult.ForeColor = Color.DarkRed;
@@ -192,6 +277,11 @@ namespace Version1
                 {
                     WaterControl.Instance.labelWaterResult.ForeColor = Color.DarkGreen;
                     WaterControl.Instance.labelWaterResult.Text = "Throughout last month your water balance was FINE. Your average is " + avg + " a day";
+                }
+                else if (sum == 0.0)
+                {
+                    WaterControl.Instance.labelWaterResult.ForeColor = Color.Yellow;
+                    WaterControl.Instance.labelWaterResult.Text = "No data inserted";
                 }
                 else
                 {
@@ -225,21 +315,27 @@ namespace Version1
         {
             //labelKcalNecc 
             double ppm = 0.0;
-            int age = DateTime.Now.Year - hc.BirthDate.Year;
-            if (sexSelected.Equals("Male"))
+            if(hc.Weight == 0 || hc.BirthDate == null || hc.Height == 0)
             {
-                ppm = 66.5 +13.75 * hc.Weight + 5.003 * hc.Height - 6.775 * age;
+                KcalControl.Instance.labelKcalNecc.Text = "0";
             }
-            else if(sexSelected.Equals("Female"))
+            else
             {
-                ppm = 655.1 + 9.563 * hc.Weight + 1.85 * hc.Height - 4.676 * age;
-            }
-            KcalControl.Instance.labelKcalNecc.Text= ((int)(Math.Round(ppm * LevelOfActiveness(hc)))).ToString();
+                int age = DateTime.Now.Year - hc.BirthDate.Year;
+                if (sexSelected.Equals("Male"))
+                {
+                    ppm = 66.5 + 13.75 * hc.Weight + 5.003 * hc.Height - 6.775 * age;
+                }
+                else if (sexSelected.Equals("Female"))
+                {
+                    ppm = 655.1 + 9.563 * hc.Weight + 1.85 * hc.Height - 4.676 * age;
+                }
+                KcalControl.Instance.labelKcalNecc.Text = ((int)(Math.Round(ppm * LevelOfActiveness(hc)))).ToString();
+              }
             if (KcalControl.Instance.dataGridViewKcal.DataSource != null)
             {
                 Instance_ShowChart();
             }
-           
         }
 
         private double LevelOfActiveness(HealthCard hc)
@@ -293,7 +389,7 @@ namespace Version1
             DataGridViewCellStyle style = new DataGridViewCellStyle();
             foreach(DataGridViewRow item in KcalControl.Instance.dataGridViewKcal.Rows) //KcalControl.Instance.dataGridViewKcal lub getKcalList().Rows
             {
-                if(Convert.ToInt32(item.Cells[1].Value) < Convert.ToInt32(KcalControl.Instance.labelKcalNecc.Text))  //
+                if(Convert.ToInt32(item.Cells[1].Value) < Convert.ToInt32(KcalControl.Instance.labelKcalNecc.Text))  
                 {
                    
                     style.ForeColor = Color.Green;
@@ -306,7 +402,7 @@ namespace Version1
                     item.Cells[1].Style.ForeColor = Color.Red ;
 
                 }
-               // KcalControl.Instance.dataGridViewKcal.Rows.;
+               
             }
             
         }
@@ -478,13 +574,6 @@ namespace Version1
             PFCControlShow();
         }
 
-        private void buttonFiber_Click(object sender, EventArgs e)
-        {
-            sidePanel.Height = buttonFiber.Height;
-            sidePanel.Top = buttonFiber.Top;
-           
-        }
-
         private void buttonExercise_Click(object sender, EventArgs e)
         {
             sidePanel.Height = buttonExercise.Height;
@@ -506,6 +595,7 @@ namespace Version1
         {
             try
             {
+                
                 if (int.TryParse(ExerciseControl.Instance.textBoxDuration.Text, out _)
                 && (Convert.ToInt32(ExerciseControl.Instance.textBoxDuration.Text) > 0
                 && Convert.ToInt32(ExerciseControl.Instance.textBoxDuration.Text) < 600))
@@ -516,12 +606,28 @@ namespace Version1
                         if (day.Date == DateTime.Now.Date && day.Id_Person == user.Id)
                         {
                             insertExercise(day);
+                            
                         }
                         else
                         {
                             continue;
                         }
                     }
+                    
+                        
+                        /*
+                        MySqlCommand comId = new MySqlCommand("SELECT LAST_INSERT_ID() FROM `day`", db.getConnection());
+                        db.openConnection();
+                        MySqlDataReader reader = comId.ExecuteReader();
+                        while(reader.Read())
+                        {
+                            dayInserted.Id = reader.GetInt32(0);
+                            dayInserted.Date = DateTime.Now;
+                        }
+                        db.closeConnection();
+                        insertExercise(dayInserted);
+                        */
+                    
                 }
                 else
                 {
@@ -551,6 +657,8 @@ namespace Version1
                 if(command.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("Exercise was updated successfully", "Success");
+                    ExerciseControl.Instance.comboBoxLevel.SelectedItem = null;
+                    ExerciseControl.Instance.textBoxDuration.Text = "";
                 }
                 else
                 {
@@ -581,15 +689,6 @@ namespace Version1
             this.SendToBack();
         }
 
-        private void labelBackDay_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void labelNextDay_Click(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }
