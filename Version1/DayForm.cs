@@ -3,12 +3,8 @@ using LiveCharts.Wpf;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Version1
@@ -35,9 +31,13 @@ namespace Version1
             int counter = 0;
             foreach(Day day in temp)
             {
-                if(day.Date == DateTime.Now)
+                if(day.Date == DateTime.Now.Date)
                 {
                     counter++;
+                }
+                else
+                {
+                    continue;
                 }
             }
             if(counter == 0)
@@ -588,6 +588,7 @@ namespace Version1
             }
             else
                 ExerciseControl.Instance.BringToFront();
+
 
         }
 

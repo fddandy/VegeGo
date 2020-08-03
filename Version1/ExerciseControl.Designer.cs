@@ -33,11 +33,13 @@
             this.comboBoxLevel = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxDuration = new System.Windows.Forms.TextBox();
+            this.buttonSubmit = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelActivityResult = new System.Windows.Forms.Label();
-            this.buttonSubmit = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,6 +104,35 @@
             this.textBoxDuration.Size = new System.Drawing.Size(100, 20);
             this.textBoxDuration.TabIndex = 9;
             // 
+            // buttonSubmit
+            // 
+            this.buttonSubmit.AutoSize = true;
+            this.buttonSubmit.BackColor = System.Drawing.Color.Bisque;
+            this.buttonSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSubmit.FlatAppearance.BorderColor = System.Drawing.Color.YellowGreen;
+            this.buttonSubmit.FlatAppearance.BorderSize = 2;
+            this.buttonSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.buttonSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.buttonSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSubmit.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSubmit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonSubmit.Location = new System.Drawing.Point(162, 152);
+            this.buttonSubmit.Name = "buttonSubmit";
+            this.buttonSubmit.Size = new System.Drawing.Size(78, 31);
+            this.buttonSubmit.TabIndex = 14;
+            this.buttonSubmit.Text = "Submit";
+            this.buttonSubmit.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Version1.Properties.Resources.Webp4;
+            this.pictureBox4.Location = new System.Drawing.Point(413, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(232, 364);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 15;
+            this.pictureBox4.TabStop = false;
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Version1.Properties.Resources.Webp3;
@@ -132,36 +163,13 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
-            // labelActivityResult
+            // panel1
             // 
-            this.labelActivityResult.BackColor = System.Drawing.Color.Linen;
-            this.labelActivityResult.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelActivityResult.Font = new System.Drawing.Font("MV Boli", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelActivityResult.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelActivityResult.Location = new System.Drawing.Point(401, 37);
-            this.labelActivityResult.Name = "labelActivityResult";
-            this.labelActivityResult.Size = new System.Drawing.Size(242, 279);
-            this.labelActivityResult.TabIndex = 13;
-            this.labelActivityResult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // buttonSubmit
-            // 
-            this.buttonSubmit.AutoSize = true;
-            this.buttonSubmit.BackColor = System.Drawing.Color.Bisque;
-            this.buttonSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSubmit.FlatAppearance.BorderColor = System.Drawing.Color.YellowGreen;
-            this.buttonSubmit.FlatAppearance.BorderSize = 2;
-            this.buttonSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.buttonSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            this.buttonSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSubmit.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSubmit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonSubmit.Location = new System.Drawing.Point(162, 152);
-            this.buttonSubmit.Name = "buttonSubmit";
-            this.buttonSubmit.Size = new System.Drawing.Size(78, 31);
-            this.buttonSubmit.TabIndex = 14;
-            this.buttonSubmit.Text = "Submit";
-            this.buttonSubmit.UseVisualStyleBackColor = false;
+            this.panel1.BackColor = System.Drawing.Color.DarkRed;
+            this.panel1.Location = new System.Drawing.Point(390, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(26, 381);
+            this.panel1.TabIndex = 16;
             // 
             // ExerciseControl
             // 
@@ -169,8 +177,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Linen;
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.buttonSubmit);
-            this.Controls.Add(this.labelActivityResult);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -181,6 +190,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ExerciseControl";
             this.Size = new System.Drawing.Size(675, 381);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -197,9 +207,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        public System.Windows.Forms.Label labelActivityResult;
         public System.Windows.Forms.ComboBox comboBoxLevel;
         public System.Windows.Forms.TextBox textBoxDuration;
         public System.Windows.Forms.Button buttonSubmit;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Panel panel1;
     }
 }

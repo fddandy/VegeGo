@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title10 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.sidePanel5 = new System.Windows.Forms.Panel();
             this.labelStatistics = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.labelWater = new System.Windows.Forms.Label();
             this.sidePanel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.sidePanel3 = new System.Windows.Forms.Panel();
@@ -56,6 +57,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.panelWater = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.buttonWaterSubmit = new System.Windows.Forms.Button();
+            this.numericUpDownWater = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             this.labelDate = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -89,6 +96,9 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelMain.SuspendLayout();
+            this.panelWater.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWater)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartWeight)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -151,12 +161,28 @@
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel6.Controls.Add(this.labelWater);
             this.panel6.Controls.Add(this.sidePanel4);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 271);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(123, 93);
             this.panel6.TabIndex = 3;
+            // 
+            // labelWater
+            // 
+            this.labelWater.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelWater.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelWater.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelWater.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWater.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.labelWater.Location = new System.Drawing.Point(10, 0);
+            this.labelWater.Name = "labelWater";
+            this.labelWater.Size = new System.Drawing.Size(109, 89);
+            this.labelWater.TabIndex = 21;
+            this.labelWater.Text = "Water";
+            this.labelWater.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelWater.Click += new System.EventHandler(this.labelWater_Click);
             // 
             // sidePanel4
             // 
@@ -382,6 +408,89 @@
             this.panelMain.TabIndex = 2;
             this.panelMain.Visible = false;
             // 
+            // panelWater
+            // 
+            this.panelWater.BackColor = System.Drawing.Color.Bisque;
+            this.panelWater.Controls.Add(this.label8);
+            this.panelWater.Controls.Add(this.pictureBox6);
+            this.panelWater.Controls.Add(this.buttonWaterSubmit);
+            this.panelWater.Controls.Add(this.numericUpDownWater);
+            this.panelWater.Controls.Add(this.label2);
+            this.panelWater.Location = new System.Drawing.Point(170, 80);
+            this.panelWater.Name = "panelWater";
+            this.panelWater.Size = new System.Drawing.Size(280, 151);
+            this.panelWater.TabIndex = 19;
+            this.panelWater.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Bisque;
+            this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label8.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label8.Location = new System.Drawing.Point(156, 68);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 17);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "litres";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::Version1.Properties.Resources.iconfinder_sink_2023123;
+            this.pictureBox6.Location = new System.Drawing.Point(197, 81);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(59, 50);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 10;
+            this.pictureBox6.TabStop = false;
+            // 
+            // buttonWaterSubmit
+            // 
+            this.buttonWaterSubmit.BackColor = System.Drawing.Color.SandyBrown;
+            this.buttonWaterSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonWaterSubmit.FlatAppearance.BorderSize = 0;
+            this.buttonWaterSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonWaterSubmit.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonWaterSubmit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonWaterSubmit.Location = new System.Drawing.Point(49, 108);
+            this.buttonWaterSubmit.Name = "buttonWaterSubmit";
+            this.buttonWaterSubmit.Size = new System.Drawing.Size(75, 23);
+            this.buttonWaterSubmit.TabIndex = 9;
+            this.buttonWaterSubmit.Text = "Submit";
+            this.buttonWaterSubmit.UseVisualStyleBackColor = false;
+            this.buttonWaterSubmit.Click += new System.EventHandler(this.buttonWaterSubmit_Click);
+            // 
+            // numericUpDownWater
+            // 
+            this.numericUpDownWater.BackColor = System.Drawing.Color.SeaShell;
+            this.numericUpDownWater.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDownWater.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.numericUpDownWater.DecimalPlaces = 1;
+            this.numericUpDownWater.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownWater.Location = new System.Drawing.Point(30, 68);
+            this.numericUpDownWater.Name = "numericUpDownWater";
+            this.numericUpDownWater.Size = new System.Drawing.Size(120, 16);
+            this.numericUpDownWater.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Bisque;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(19, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(244, 40);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "How much water have you already drunk today?";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // labelDate
             // 
             this.labelDate.BackColor = System.Drawing.Color.White;
@@ -432,27 +541,27 @@
             // 
             // chartWeight
             // 
-            chartArea1.AxisX.Title = "Date";
-            chartArea1.AxisY.Title = "Kg";
-            chartArea1.Name = "ChartArea1";
-            this.chartWeight.ChartAreas.Add(chartArea1);
+            chartArea5.AxisX.Title = "Date";
+            chartArea5.AxisY.Title = "Kg";
+            chartArea5.Name = "ChartArea1";
+            this.chartWeight.ChartAreas.Add(chartArea5);
             this.chartWeight.Location = new System.Drawing.Point(323, 87);
             this.chartWeight.Name = "chartWeight";
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            series1.Name = "SeriesW";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chartWeight.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            series5.Name = "SeriesW";
+            series5.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
+            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.chartWeight.Series.Add(series5);
             this.chartWeight.Size = new System.Drawing.Size(345, 307);
             this.chartWeight.TabIndex = 14;
             this.chartWeight.Text = "chart1";
-            title1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            title1.Name = "Title1";
-            title1.Text = "Personal statistics";
-            title2.Name = "Title2";
-            this.chartWeight.Titles.Add(title1);
-            this.chartWeight.Titles.Add(title2);
+            title9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            title9.Name = "Title1";
+            title9.Text = "Personal statistics";
+            title10.Name = "Title2";
+            this.chartWeight.Titles.Add(title9);
+            this.chartWeight.Titles.Add(title10);
             // 
             // comboBoxPeriod
             // 
@@ -495,6 +604,7 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.panelWater);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.labelAL);
@@ -696,6 +806,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
+            this.panelWater.ResumeLayout(false);
+            this.panelWater.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWater)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartWeight)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
@@ -756,5 +870,12 @@
         private System.Windows.Forms.Panel sidePanel3;
         private System.Windows.Forms.Panel sidepanel1;
         private System.Windows.Forms.Label labelAddMeal;
+        private System.Windows.Forms.Label labelWater;
+        private System.Windows.Forms.Panel panelWater;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Button buttonWaterSubmit;
+        private System.Windows.Forms.NumericUpDown numericUpDownWater;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label8;
     }
 }

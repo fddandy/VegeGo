@@ -216,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\food.jpg" />
+    <None Include="Resources\Webp.net-resizeimage %282%29.jpg" />
     <None Include="Resources\Webp.net-resizeimage %281%29.jpg" />
     <None Include="Resources\Webp.net-resizeimage.jpg" />
     <None Include="Resources\Webp.net-resizeimage %2813%29.png" />
@@ -247,6 +248,7 @@
     <None Include="Resources\plant %281%29.png" />
     <None Include="Resources\iconfinder_exercise_310335.png" />
     <None Include="Resources\iconfinder_time-duration-clock-notification_2075826.png" />
+    <None Include="Resources\iconfinder_sink_2023123.png" />
     <Content Include="Resources\VegeGo.jpg" />
     <None Include="Resources\iconfinder_key-password-passcode-access_2205205.png" />
     <None Include="Resources\iconfinder_user_female_172621.png" />

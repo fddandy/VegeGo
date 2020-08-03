@@ -27,9 +27,6 @@ namespace Version1
             loadHealthCard();
             list = createDaysList();
             sidepanel1.Visible = true;
-            //dayControl2.DayWaterNecc += DayControl2_DayWaterNecc;
-            //dayControl2.DayWaterDay += DayControl2_DayWaterDay;
-            //dayControl2.DayWaterCombo += DayControl2_DayWaterCombo;
         }
 
         private List<Day> createDaysList()
@@ -43,8 +40,6 @@ namespace Version1
             while(rd.Read())
             {
                 Day day = new Day();
-                //day.Id = MainWindow.SafeGetString(rd, 1);
-                
                 day.Id = rd.GetInt32("id");
                 day.Date = rd.GetDateTime("date").Date;
                 if (!rd.IsDBNull(2))
@@ -82,14 +77,7 @@ namespace Version1
             db.closeConnection();
             return list;
         }
-        /*
-        public static int  SafeGetString(this MySqlDataReader reader, int colIndex)
-        {
-            if (!reader.IsDBNull(colIndex))
-                return reader.GetInt32(colIndex);
-            return 0;
-        }
-        */
+        
         private void loadHealthCard()
         {
             DB db = new DB();
@@ -153,6 +141,9 @@ namespace Version1
 
         private void LbCard_MouseClick(object sender, MouseEventArgs e)
         {
+            this.Controls.Remove(panelWater);
+            panelWater.SendToBack();
+            panelWater.Visible = false;
             panelMain.BringToFront();
             sidepanel1.Visible = true;
             sidePanel2.Visible = false;
@@ -301,6 +292,7 @@ namespace Version1
 
         private void labelMealTracker_MouseClick(object sender, MouseEventArgs e)
         {
+            this.Controls.Remove(panelWater);
             sidepanel1.Visible = false;
             sidePanel2.Visible = false;
             sidePanel3.Visible = true;
@@ -317,6 +309,7 @@ namespace Version1
 
         private void labelAddMeal_Click(object sender, EventArgs e)
         {
+            this.Controls.Remove(panelWater);
             sidepanel1.Visible = false;
             sidePanel2.Visible = true;
             sidePanel3.Visible = false;
@@ -324,6 +317,93 @@ namespace Version1
             sidePanel5.Visible = false;
             AddMealForm addMealForm = new AddMealForm(user);
             addMealForm.ShowDialog();
+        }
+
+        private void labelWater_Click(object sender, EventArgs e)
+        {
+            sidepanel1.Visible = false;
+            sidePanel2.Visible = false;
+            sidePanel3.Visible = false;
+            sidePanel4.Visible = true;
+            sidePanel5.Visible = false;
+            panelMain.SendToBack();
+            panelMain.Visible = false;
+            panelWater.BringToFront();
+            panelWater.Visible = true;
+            
+            this.Controls.Add(panelWater);
+
+        }
+
+        private void buttonWaterSubmit_Click(object sender, EventArgs e)
+        {
+            if(Convert.ToDouble(numericUpDownWater.Value) == 0.0)
+            {
+                MessageBox.Show("Add some water", "Warning");
+                return;
+            }
+            else
+            {
+                
+                DB db = new DB();
+                
+                double waterBefore = CreateDay();
+                
+                MySqlCommand command = new MySqlCommand("UPDATE `day` SET `water` = @uW WHERE `date` = @uD AND `id_person` = @uID_person", db.getConnection());
+                command.Parameters.Add("@uW", MySqlDbType.Double).Value = Math.Round((Convert.ToDouble(numericUpDownWater.Value) + waterBefore), 2);
+                command.Parameters.Add("@uD", MySqlDbType.DateTime).Value = DateTime.Now.Date;
+                command.Parameters.Add("@uID_person", MySqlDbType.Int32).Value = user.Id;
+                db.openConnection();
+                if(command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Great job, "+numericUpDownWater.Value.ToString()+" litres is an amazing step!", "Success");
+                }
+                else
+                {
+                    MessageBox.Show("Oooops...something went wrong,"+Environment.NewLine+" could not add "+numericUpDownWater.ToString()+" litres", "Warning");
+                }
+                db.closeConnection();
+            }
+
+        }
+
+        private double CreateDay()
+        {
+            List<Day> temp = createDaysList();
+            int counter = 0;
+            double waterBefore = 0.0;
+            foreach (Day day in temp)
+            {
+                if (day.Date == DateTime.Now.Date)
+                {
+                    counter++;
+                    waterBefore = day.Water;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            if (counter == 0)
+            {
+                DB db = new DB();
+                MySqlCommand com = new MySqlCommand("INSERT INTO `day`(`date`, `id_person`, `water`, `kcal`," +
+                    " `protein`, `fat`, `fiber`,`carb`, `exercise`) VALUES" +
+                    " (@uD, @uID, @uW, @uK, @uP, @uFt, @uFb, @uC, @uE)", db.getConnection());
+                com.Parameters.Add("@uD", MySqlDbType.DateTime).Value = DateTime.Now.Date;
+                com.Parameters.Add("@uID", MySqlDbType.Int32).Value = user.Id;
+                com.Parameters.Add("@uP", MySqlDbType.Double).Value = 0;
+                com.Parameters.Add("@uFt", MySqlDbType.Double).Value = 0;
+                com.Parameters.Add("@uFb", MySqlDbType.Double).Value = 0;
+                com.Parameters.Add("@uC", MySqlDbType.Double).Value = 0;
+                com.Parameters.Add("@uK", MySqlDbType.Int32).Value = 0;
+                com.Parameters.Add("@uW", MySqlDbType.Double).Value = numericUpDownWater.Value.ToString();
+                com.Parameters.Add("@uE", MySqlDbType.VarChar).Value = string.Empty;
+                db.openConnection();
+                com.ExecuteNonQuery();
+                db.closeConnection();
+            }
+            return waterBefore;
         }
     }
 }

@@ -153,6 +153,16 @@ namespace Version1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_sink_2023123 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_sink_2023123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_time_duration_clock_notification_2075826 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_time-duration-clock-notification_2075826", resourceCulture);
@@ -386,6 +396,16 @@ namespace Version1.Properties {
         internal static System.Drawing.Bitmap Webp3 {
             get {
                 object obj = ResourceManager.GetObject("Webp3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Webp4 {
+            get {
+                object obj = ResourceManager.GetObject("Webp4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
