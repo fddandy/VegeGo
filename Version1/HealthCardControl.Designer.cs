@@ -73,7 +73,7 @@
             this.panelMain.BackColor = System.Drawing.Color.Transparent;
             this.panelMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMain.BackgroundImage")));
             this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelMain.Controls.Add(this.dayControl2);
+           // this.panelMain.Controls.Add(this.dayControl2);
             this.panelMain.Controls.Add(this.labelDate);
             this.panelMain.Controls.Add(this.label7);
             this.panelMain.Controls.Add(this.label6);
@@ -92,11 +92,11 @@
             // 
             // dayControl2
             // 
-            this.dayControl2.BackColor = System.Drawing.Color.Linen;
-            this.dayControl2.Location = new System.Drawing.Point(665, -2);
-            this.dayControl2.Name = "dayControl2";
-            this.dayControl2.Size = new System.Drawing.Size(10, 401);
-            this.dayControl2.TabIndex = 19;
+           // this.dayControl2.BackColor = System.Drawing.Color.Linen;
+          //  this.dayControl2.Location = new System.Drawing.Point(665, -2);
+          //  this.dayControl2.Name = "dayControl2";
+           // this.dayControl2.Size = new System.Drawing.Size(10, 401);
+            //this.dayControl2.TabIndex = 19;
             // 
             // labelDate
             // 
@@ -182,7 +182,7 @@
             this.comboBoxPeriod.Name = "comboBoxPeriod";
             this.comboBoxPeriod.Size = new System.Drawing.Size(103, 21);
             this.comboBoxPeriod.TabIndex = 13;
-            this.comboBoxPeriod.SelectedIndexChanged += new System.EventHandler(this.comboBoxPeriod_SelectedIndexChanged);
+            
             // 
             // label5
             // 

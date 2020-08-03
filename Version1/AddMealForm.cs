@@ -321,10 +321,16 @@ namespace Version1
 
                 if (isParInRange(AdaptTextBox(textBoxFat), 100, "Fat") &&
                     isParInRange(AdaptTextBox(textBoxKcal), 1500, "Kcal") &&
+                    int.TryParse(AdaptTextBox(textBoxKcal), out _) &&
                     isParInRange(AdaptTextBox(textBoxCarbs), 350, "Carbohydrates") &&
                     isParInRange(AdaptTextBox(textBoxFiber), 60, "Fiber") &&
                     isParInRange(AdaptTextBox(textBoxProtein), 100, "Protein"))
                     return true;
+                else if(!int.TryParse(AdaptTextBox(textBoxKcal), out _))
+                {
+                    MessageBox.Show("Please enter a whole number.", "Kcal is invalid");
+                    return false;
+                }
                 else
                     return false;
 

@@ -17,9 +17,5 @@ namespace Version1
             InitializeComponent();
         }
 
-        private void comboBoxPeriod_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

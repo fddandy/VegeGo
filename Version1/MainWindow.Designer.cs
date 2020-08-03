@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title10 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title11 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title12 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.sidePanel5 = new System.Windows.Forms.Panel();
@@ -412,6 +412,7 @@
             // 
             this.panelWater.BackColor = System.Drawing.Color.Bisque;
             this.panelWater.Controls.Add(this.label8);
+            this.panelWater.Controls.Add(this.label4);
             this.panelWater.Controls.Add(this.pictureBox6);
             this.panelWater.Controls.Add(this.buttonWaterSubmit);
             this.panelWater.Controls.Add(this.numericUpDownWater);
@@ -541,27 +542,27 @@
             // 
             // chartWeight
             // 
-            chartArea5.AxisX.Title = "Date";
-            chartArea5.AxisY.Title = "Kg";
-            chartArea5.Name = "ChartArea1";
-            this.chartWeight.ChartAreas.Add(chartArea5);
+            chartArea6.AxisX.Title = "Date";
+            chartArea6.AxisY.Title = "Kg";
+            chartArea6.Name = "ChartArea1";
+            this.chartWeight.ChartAreas.Add(chartArea6);
             this.chartWeight.Location = new System.Drawing.Point(323, 87);
             this.chartWeight.Name = "chartWeight";
-            series5.ChartArea = "ChartArea1";
-            series5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            series5.Name = "SeriesW";
-            series5.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chartWeight.Series.Add(series5);
+            series6.ChartArea = "ChartArea1";
+            series6.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            series6.Name = "SeriesW";
+            series6.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
+            series6.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.chartWeight.Series.Add(series6);
             this.chartWeight.Size = new System.Drawing.Size(345, 307);
             this.chartWeight.TabIndex = 14;
             this.chartWeight.Text = "chart1";
-            title9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            title9.Name = "Title1";
-            title9.Text = "Personal statistics";
-            title10.Name = "Title2";
-            this.chartWeight.Titles.Add(title9);
-            this.chartWeight.Titles.Add(title10);
+            title11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            title11.Name = "Title1";
+            title11.Text = "Personal statistics";
+            title12.Name = "Title2";
+            this.chartWeight.Titles.Add(title11);
+            this.chartWeight.Titles.Add(title12);
             // 
             // comboBoxPeriod
             // 
@@ -605,7 +606,6 @@
             // panel8
             // 
             this.panel8.Controls.Add(this.panelWater);
-            this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.label3);
             this.panel8.Controls.Add(this.labelAL);
             this.panel8.Controls.Add(this.labelW);
@@ -628,7 +628,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(158, 115);
+            this.label4.Location = new System.Drawing.Point(-3, 35);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(22, 17);
             this.label4.TabIndex = 16;
@@ -655,11 +655,10 @@
             // 
             // labelW
             // 
-            this.labelW.AutoSize = true;
             this.labelW.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelW.Location = new System.Drawing.Point(123, 115);
+            this.labelW.Location = new System.Drawing.Point(111, 115);
             this.labelW.Name = "labelW";
-            this.labelW.Size = new System.Drawing.Size(48, 17);
+            this.labelW.Size = new System.Drawing.Size(69, 17);
             this.labelW.TabIndex = 13;
             this.labelW.Text = "label3";
             // 

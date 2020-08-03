@@ -90,7 +90,7 @@ namespace Version1
                 hc.Id = reader.GetInt32("id");
                 hc.BirthDate = reader.GetDateTime("birth_date").Date;
                 hc.Height = reader.GetInt32("height");
-                hc.Weight = reader.GetInt32("weight");
+                hc.Weight = reader.GetDouble("weight");
                 hc.ActLevel = reader.GetString("activ_level");
             }
             db.closeConnection();

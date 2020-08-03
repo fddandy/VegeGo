@@ -10,13 +10,13 @@ namespace Version1
     {
         int _Id;
         DateTime _BirthDate;
-        float _Weight;
+        double _Weight;
         int _Height;
         string _ActLevel;
         int _IdPerson;
 
         public int Id { get => _Id; set => _Id = value; }
-        public float Weight { get => _Weight; set => _Weight = value; }
+        public double Weight { get => _Weight; set => _Weight = value; }
         public int Height { get => _Height; set => _Height = value; }
         public string ActLevel { get => _ActLevel; set => _ActLevel = value; }
         public int IdPerson { get => _IdPerson; set => _IdPerson = value; }

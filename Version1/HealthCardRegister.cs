@@ -23,6 +23,7 @@ namespace Version1
             if(alreadyExists())
             {
                 datePick.Enabled = false;
+                fieldHeight.Enabled = false;
                 loadExistingData();
             }
         }
@@ -31,13 +32,14 @@ namespace Version1
         {
             DB db = new DB();
             db.openConnection();
-            MySqlCommand com = new MySqlCommand("select `id`, `birth_date`,`height`, `weight`, `activ_level` from `health_card` where id_person=@id", db.getConnection());
+            MySqlCommand com = new MySqlCommand("select `id`, `birth_date`,`height`, `weight`, `activ_level` " +
+                "from `health_card` where id_person=@id", db.getConnection());
             com.Parameters.Add("@id", MySqlDbType.Int32).Value = user.Id;
             MySqlDataReader reader = com.ExecuteReader();
             while (reader.Read())
             {
                 fieldHeight.Text = reader.GetInt32("height").ToString();
-                fieldWeight.Text = reader.GetFloat("weight").ToString();
+                fieldWeight.Text = reader.GetDouble("weight").ToString();
                 datePick.Value = reader.GetDateTime("birth_date");
                 comboBoxActLevel.SelectedItem = reader.GetString("activ_level");
             }
@@ -88,7 +90,7 @@ namespace Version1
                     {
                         MessageBox.Show("Data was succesfully inserted", "Adding");
                         createHealthCard(hc, db);
-                        updateHistory(hc, db);
+                        updateHistory(hc);
                         this.Close();
                         MainWindow mw = new MainWindow(user);
                         mw.ShowDialog();
@@ -103,7 +105,8 @@ namespace Version1
             }
             else // editing an old record
             {
-                MySqlCommand command = new MySqlCommand("UPDATE health_card  SET birth_date = @uBD, weight = @uW, height = @uH, activ_level = @uAL WHERE id_person = @id", db.getConnection());
+                MySqlCommand command = new MySqlCommand("UPDATE health_card  SET birth_date = @uBD, weight = @uW, height = @uH," +
+                    " activ_level = @uAL WHERE id_person = @id", db.getConnection());
                 if(setParameters(command))
                 {
                     db.openConnection();
@@ -112,7 +115,7 @@ namespace Version1
                         MessageBox.Show("Data was succesfully updated", "Editing");
                         createHealthCard(hc, db);
                         db.closeConnection();
-                        updateHistory(hc,db);
+                        updateHistory(hc);
                     }
                     else
                     {
@@ -129,17 +132,49 @@ namespace Version1
             db.closeConnection();
         }
 
-        private void updateHistory(HealthCard hc, DB db)
+        private void updateHistory(HealthCard hc)
         {
-            MySqlCommand comUpdate = new MySqlCommand("INSERT INTO `updates_history` (`update_date`, `weight`, `activ_level`, `id_hc`)" +
-                                                                            " VALUES (@uDate, @uW, @uAL, @uID)", db.getConnection());
+            DB db = new DB();
+            MySqlCommand com = new MySqlCommand("SELECT `id` FROM `updates_history` WHERE " +
+                "`id_hc` = @uID_hc AND `update_date` = @uD",db.getConnection());
+            com.Parameters.Add("@uID_hc", MySqlDbType.Int32).Value = hc.Id;
+            com.Parameters.Add("@uD", MySqlDbType.DateTime).Value = DateTime.Now.Date;
+            db.openConnection();
+            MySqlDataReader reader = com.ExecuteReader();
+
+            if(reader.HasRows) // jesli istnieje juz aktualizacja tego dnia 
+            {
+                int id = 0;
+                while (reader.Read())
+                {
+                    id = reader.GetInt32("id");
+                }
+               
+                db.closeConnection();
+                MySqlCommand comUpdate = new MySqlCommand("UPDATE  updates_history" +
+                "  SET  weight = @uW, activ_level = @uAL WHERE id = @uID", db.getConnection());
+                comUpdate.Parameters.Add("@uW", MySqlDbType.Double).Value = hc.Weight;
+                comUpdate.Parameters.Add("@uAL", MySqlDbType.VarChar).Value = hc.ActLevel;
+                comUpdate.Parameters.Add("@uID", MySqlDbType.Int32).Value = id;
+                db.openConnection();
+                comUpdate.ExecuteNonQuery();
+                db.closeConnection();
+            }
+            else // nie ma aktualizacji w ten dzien w bazie danych
+            {
+                db.closeConnection();
+            MySqlCommand comUpdate = new MySqlCommand("INSERT INTO `updates_history`" +
+                " (`update_date`, `weight`, `activ_level`, `id_hc`)" +
+                " VALUES (@uDate, @uW, @uAL, @uID)", db.getConnection());
+
             comUpdate.Parameters.Add("@uDate", MySqlDbType.DateTime).Value = DateTime.Now.Date;
-            comUpdate.Parameters.Add("@uW", MySqlDbType.Float).Value = hc.Weight;
+            comUpdate.Parameters.Add("@uW", MySqlDbType.Double).Value = hc.Weight;
             comUpdate.Parameters.Add("@uAL", MySqlDbType.VarChar).Value = hc.ActLevel;
             comUpdate.Parameters.Add("@uID", MySqlDbType.Int32).Value = hc.Id;
             db.openConnection();
             comUpdate.ExecuteNonQuery();
             db.closeConnection();
+            }
         }
 
         private bool setParameters(MySqlCommand command)
@@ -151,7 +186,7 @@ namespace Version1
             else
             {
                 command.Parameters.Add("@uBD", MySqlDbType.DateTime).Value = datePick.Value;
-                command.Parameters.Add("@uW", MySqlDbType.Float).Value = float.Parse(fieldWeight.Text);
+                command.Parameters.Add("@uW", MySqlDbType.Double).Value = double.Parse(fieldWeight.Text);
                 command.Parameters.Add("@uH", MySqlDbType.Int32).Value = int.Parse(fieldHeight.Text);
                 command.Parameters.Add("@uAL", MySqlDbType.VarChar).Value = comboBoxActLevel.SelectedItem;
                 command.Parameters.Add("@id", MySqlDbType.Int32).Value = user.Id;
@@ -172,7 +207,7 @@ namespace Version1
                 return false;
             }
 
-            else if (float.Parse(fieldWeight.Text) < 30.0 || float.Parse(fieldWeight.Text) > 350.0)
+            else if (double.Parse(fieldWeight.Text) < 30.0 || double.Parse(fieldWeight.Text) > 350.0)
             {
                 MessageBox.Show("Cannot accept such few/many kg", "Not valid weight");
                 return false;
@@ -193,7 +228,7 @@ namespace Version1
             }
             hc.BirthDate = datePick.Value;
             hc.Height = int.Parse(fieldHeight.Text);
-            hc.Weight = float.Parse(fieldWeight.Text);
+            hc.Weight = double.Parse(fieldWeight.Text);
             hc.ActLevel = comboBoxActLevel.SelectedItem.ToString();
             hc.IdPerson = user.Id;
         }
