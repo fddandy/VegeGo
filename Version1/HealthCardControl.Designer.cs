@@ -34,7 +34,6 @@
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panelMain = new System.Windows.Forms.Panel();
-           // this.dayControl2 = new Version1.DayControl();
             this.labelDate = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,7 +72,6 @@
             this.panelMain.BackColor = System.Drawing.Color.Transparent;
             this.panelMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMain.BackgroundImage")));
             this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-           // this.panelMain.Controls.Add(this.dayControl2);
             this.panelMain.Controls.Add(this.labelDate);
             this.panelMain.Controls.Add(this.label7);
             this.panelMain.Controls.Add(this.label6);
@@ -89,14 +87,6 @@
             this.panelMain.Size = new System.Drawing.Size(675, 401);
             this.panelMain.TabIndex = 3;
             this.panelMain.Visible = false;
-            // 
-            // dayControl2
-            // 
-           // this.dayControl2.BackColor = System.Drawing.Color.Linen;
-          //  this.dayControl2.Location = new System.Drawing.Point(665, -2);
-          //  this.dayControl2.Name = "dayControl2";
-           // this.dayControl2.Size = new System.Drawing.Size(10, 401);
-            //this.dayControl2.TabIndex = 19;
             // 
             // labelDate
             // 
@@ -182,7 +172,6 @@
             this.comboBoxPeriod.Name = "comboBoxPeriod";
             this.comboBoxPeriod.Size = new System.Drawing.Size(103, 21);
             this.comboBoxPeriod.TabIndex = 13;
-            
             // 
             // label5
             // 
@@ -232,7 +221,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(158, 115);
+            this.label4.Location = new System.Drawing.Point(167, 115);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(22, 17);
             this.label4.TabIndex = 16;
@@ -242,7 +231,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MV Boli", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(144, 64);
+            this.label3.Location = new System.Drawing.Point(162, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 17);
             this.label3.TabIndex = 15;

@@ -614,21 +614,6 @@ namespace Version1
                             continue;
                         }
                     }
-                    
-                        
-                        /*
-                        MySqlCommand comId = new MySqlCommand("SELECT LAST_INSERT_ID() FROM `day`", db.getConnection());
-                        db.openConnection();
-                        MySqlDataReader reader = comId.ExecuteReader();
-                        while(reader.Read())
-                        {
-                            dayInserted.Id = reader.GetInt32(0);
-                            dayInserted.Date = DateTime.Now;
-                        }
-                        db.closeConnection();
-                        insertExercise(dayInserted);
-                        */
-                    
                 }
                 else
                 {

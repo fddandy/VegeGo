@@ -107,6 +107,7 @@ namespace Version1
 
                             if (command.ExecuteNonQuery() == 1)
                             {
+                                addMealToDay();
                                 MessageBox.Show("Your meal was uploaded", "Success");
                                 clearmealForm();
                             }
@@ -291,6 +292,7 @@ namespace Version1
 
                 if (command.ExecuteNonQuery() == 1)
                 {
+                    addMealToDay();
                     MessageBox.Show("Your meal was uploaded", "Success");
                     clearmealForm();
                 }
@@ -352,6 +354,60 @@ namespace Version1
             textBoxWeiQua.Visible = true;
             metrics = 0;
             textBoxWeiQua.Text = "";
+        }
+
+        private void addMealToDay()
+        {
+            
+            int id = 0;
+            int kcal = 0;
+            double protein = 0.0;
+            double fat = 0.0;
+            double carb = 0.0;
+            double fiber = 0.0;
+            DB db = new DB();
+           
+            MySqlCommand com = new MySqlCommand("SELECT `id`, `kcal`, `protein`, `fat`, `carb`, `fiber` FROM `day` WHERE `id_person` = @uID AND `date` = @uD", db.getConnection());
+            com.Parameters.Add("@uID", MySqlDbType.Int32).Value = user.Id;
+            com.Parameters.Add("@uD", MySqlDbType.DateTime).Value = DateTime.Now.Date;
+           
+            db.openConnection();
+            MySqlDataReader dr = com.ExecuteReader();
+            
+            while(dr.Read())
+            {
+                id = dr.GetInt32("id");
+                kcal = dr.GetInt32("kcal");
+                protein = dr.GetDouble("protein");
+                fat = dr.GetDouble("fat");
+                carb = dr.GetDouble("carb");
+                fiber = dr.GetDouble("fiber");
+               
+            }
+
+            db.closeConnection();
+
+
+            MySqlCommand command = new MySqlCommand("UPDATE `day` SET `kcal` = @uK, `protein` = @uP," +
+                " `fat` = @uF, `carb` = @uC, `fiber` = @uFi WHERE `id` = @uID", db.getConnection());
+            command.Parameters.Add("@uK", MySqlDbType.Int32).Value = (Convert.ToInt32(textBoxKcal.Text)+kcal);  //Math.Round((Convert.ToDouble(numericUpDownWater.Value) + waterBefore)
+            command.Parameters.Add("@uID", MySqlDbType.Int32).Value = id;
+            command.Parameters.Add("@uP", MySqlDbType.Double).Value = (Convert.ToDouble(textBoxProtein.Text) + protein);
+            command.Parameters.Add("@uF", MySqlDbType.Double).Value = (Convert.ToDouble(textBoxFat.Text) + fat);
+            command.Parameters.Add("@uC", MySqlDbType.Double).Value = (Convert.ToDouble(textBoxCarbs.Text) + carb);
+            command.Parameters.Add("@uFi", MySqlDbType.Double).Value = (Convert.ToDouble(textBoxFiber.Text) + fiber);
+            db.openConnection();
+            /*
+            if (command.ExecuteNonQuery() == 1)
+            {
+                MessageBox.Show("day updated!", "Success");
+            }
+            else
+            {
+                MessageBox.Show("did not update day", "Warning");
+            }
+            */
+            db.closeConnection();
         }
     }
 }

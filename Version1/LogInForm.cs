@@ -59,9 +59,10 @@ namespace Version1
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
             db.openConnection();
             MySqlDataReader dr = command.ExecuteReader();
-            if(dr == null)
+            if(!dr.HasRows) //dr.GetValue(0) == DBNull.Value
             {
                 MessageBox.Show("Login is incorrect");
+                return;
             }
             while(dr.Read())
             {
